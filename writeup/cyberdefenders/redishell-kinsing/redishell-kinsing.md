@@ -13,14 +13,12 @@ Najbardziej typowe narzędzie to będzie wireshark
 #### Q1
 Security monitoring flagged suspicious HTTP traffic targeting the container subnet. Identifying the first system that received malicious requests is essential for establishing the initial point of compromise. What is the IP address of the first compromised system?
 <details>
-  <summary>Click me</summary>
+  <summary>Anserw: Click me</summary>
   172.16.10.10
 </details>
 
-```
-Statistics > Converastion > Ipv4
-Pierwsza komunikacja z zewnątrz na która natafiamy w Wireshark trafia właśnie na ten adres Ip.
-```
+```Statistics > Converastion > Ipv4
+Pierwsza komunikacja z zewnątrz na która natafiamy w Wireshark trafia właśnie na ten adres Ip.```
 
 
 
