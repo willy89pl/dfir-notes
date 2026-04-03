@@ -6,10 +6,10 @@ Before the ransomware deployment, the attackers established initial access throu
 
 ## Tools
 Analiza pliku .pcap
-Najbardziej typowe narzędzie to będzie wireshark
+Najbardziej typowe narzędzie to będzie wireshark.
 
 ## Q&A
-### Initial Access & Reconnaissance
+
 #### Q1
 Security monitoring flagged suspicious HTTP traffic targeting the container subnet. Identifying the first system that received malicious requests is essential for establishing the initial point of compromise. What is the IP address of the first compromised system?
 <details>
@@ -265,3 +265,8 @@ Before concluding their session, the attacker discovered that network traffic wa
 ```
 To jest ciekawa część. Po ruchomieniu uploadserwera , atakujący grepuje w psaux proces tcpdumpa. Okazuje się że tcpdump zbierał .pcap Akatujący ubija proces.
 ```
+
+## tl;dr
+- Initial Access & Reconnaissance
+ - wykrycie publicznie dostepnego serwera Jenkins (v2.387.1)
+ - dostepny endpoint */script*
