@@ -268,5 +268,5 @@ To jest ciekawa część. Po ruchomieniu uploadserwera , atakujący grepuje w ps
 
 ## tl;dr
 - Initial Access & Reconnaissance
- - wykrycie publicznie dostepnego serwera Jenkins (v2.387.1)
- - dostepny endpoint */script*
+  - wykrycie publicznie dostepnego serwera Jenkins (v2.387.1)
+  - dostepny endpoint */script*
