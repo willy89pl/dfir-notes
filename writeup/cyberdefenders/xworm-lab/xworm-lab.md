@@ -138,8 +138,10 @@ komentarz, wyjasnienie etc
 # analiza malware
 
 1. plik .exe, podszywanie sie pod adobe
+
 |entrypoint
 v
+
 2. główna funkcja:
   - Sleep (opóźnienie)
   - Odszyfrowanie configu
