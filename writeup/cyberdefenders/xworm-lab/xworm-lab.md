@@ -138,9 +138,16 @@ komentarz, wyjasnienie etc
 # analiza malware
 
 1. plik .exe, podszywanie sie pod adobe
-|
+|entrypoint
 v
-2. 
+2. główna funkcja:
+  - Sleep (opóźnienie)
+  - Odszyfrowanie configu
+  - Anti-VM / anti-debug
+  - Drop pliku na dysk
+  - Persistence (3 metody!)
+  - Wyłączenie Windows Defendera
+  - Start wielu wątków (główna logika malware)
 
 
 ***
@@ -151,15 +158,33 @@ v
 - analiza startowej funkcji (main lub podobne)
 - przykłądy sprawdzenia anty debug:
   - Wykrywanie maszyny wirtualnej (VM detection)
-  ```
-  new ManagementObjectSearcher("Select * from Win32_ComputerSystem")
+```
+new ManagementObjectSearcher("Select * from Win32_ComputerSystem")
 
-  string text = ...["Manufacturer"].ToString().ToLower();
+string text = ...["Manufacturer"].ToString().ToLower();
 
 if (text.Contains("vmware") ||
     model.Contains("VIRTUAL") ||
     model == "VirtualBox")
 {
     return true;
-}
-  ```
+} 
+```
+  - Wykrywanie debuggera
+```
+[DllImport("kernel32.dll", EntryPoint = "CheckRemoteDebuggerPresent")]
+
+CheckRemoteDebuggerPresent(Process.GetCurrentProcess().Handle, ref flag);
+```
+  - Wykrywanie Sandboxa
+```
+GetModuleHandle("SbieDll.dll")
+```
+  - Wykrywanie starego systemu (Windows XP)
+```
+new ComputerInfo().OSFullName.ToLower().Contains("xp")
+```
+  - Wykrywanie środowiska hostingowego (VPS / cloud)
+```
+new WebClient().DownloadString("http://ip-api.com/line/?fields=hosting")
+```
