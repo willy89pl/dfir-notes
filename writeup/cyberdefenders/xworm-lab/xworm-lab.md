@@ -190,3 +190,19 @@ new ComputerInfo().OSFullName.ToLower().Contains("xp")
 ```
 new WebClient().DownloadString("http://ip-api.com/line/?fields=hosting")
 ```
+
+***
+# TEST AREA
+
+graph TD
+    %% Definicja węzłów
+    A[Domain: lumafrost.com] -- DNS --> B(IP: 194.26.x.x)
+    B -- Scan --> C{Port 443}
+    
+    %% Logika decyzji
+    C -- "JARM Hash" --> D[Pivot: star-service.website]
+    C -- "HTML Body" --> E[Network Device Login]
+    
+    %% Stylizacja (opcjonalna)
+    style E fill:#f96,stroke:#333,stroke-width:2px
+    style A fill:#bbf,stroke:#333
