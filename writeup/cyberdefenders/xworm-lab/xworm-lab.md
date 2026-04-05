@@ -16,6 +16,17 @@ Python3
 
 ## Q&A
 
+#### Q1
+What is the compile timestamp (UTC) of the sample?
+<details>
+  <summary>Answer: Click me</summary>
+  2024-02-25 22:53
+</details>
+
+```
+Data kompilacji czyli innymi słowy creation time, pliku. Itotne że pytanie jest o czas UTC, soft (np. DiE) pokazuje czas lokalny (na czas kompilacji) natomiast szukajac po hash np. w VT dostaniemy prawidłowy czas UTC.
+```
+
 #### Qx
 pytanie
 <details>
@@ -38,6 +49,60 @@ pytanie
 komentarz, wyjasnienie etc
 ```
 
+#### Qx
+pytanie
+<details>
+  <summary>Answer: Click me</summary>
+  odpowiedz
+</details>
+
+```
+komentarz, wyjasnienie etc
+```
+
+#### Qx
+pytanie
+<details>
+  <summary>Answer: Click me</summary>
+  odpowiedz
+</details>
+
+```
+komentarz, wyjasnienie etc
+```
+
+#### Qx
+pytanie
+<details>
+  <summary>Answer: Click me</summary>
+  odpowiedz
+</details>
+
+```
+komentarz, wyjasnienie etc
+```
+
+#### Qx
+pytanie
+<details>
+  <summary>Answer: Click me</summary>
+  odpowiedz
+</details>
+
+```
+komentarz, wyjasnienie etc
+```
+
+#### Qx
+pytanie
+<details>
+  <summary>Answer: Click me</summary>
+  odpowiedz
+</details>
+
+```
+komentarz, wyjasnienie etc
+```
 
 ## tl;dr czyli Kill Chain
 1. Initial Access & Reconnaissance
