@@ -8,7 +8,9 @@ Your task is to investigate artifacts from one of the compromised endpoints to u
 
 ## Tools
 Publicznie dostępne narzędzia takie jak VirusTotal czy online sandboxy, a także różnego rodzaju bazy wiedzy typu Malpedia, AlienVault etc.
----
+
+***
+
 ## Q&A
 
 #### Q1
@@ -142,7 +144,9 @@ What registrar service did the attacker use to register the treasurybanks.org do
 ```
 Wertując informację o domenie na VT natrafimy na sekcję *Historical Whois Lookups* w której mamy rejestratora domeny.
 ```
----
+
+***
+
 ## LessonLEarned:
 
 - Malvertising *rodzaj złośliwej metody reklamowej, odnosi się do sposobu, w jaki atakujący wykorzystują reklamy do infekowania użytkowników*
