@@ -27,26 +27,26 @@ What is the compile timestamp (UTC) of the sample?
 Data kompilacji czyli innymi słowy creation time, pliku. Itotne że pytanie jest o czas UTC, soft (np. DiE) pokazuje czas lokalny (na czas kompilacji) natomiast szukajac po hash np. w VT dostaniemy prawidłowy czas UTC.
 ```
 
-#### Qx
-pytanie
+#### Q2
+Which legitimate company does the malware impersonate in an attempt to appear trustworthy?
 <details>
   <summary>Answer: Click me</summary>
-  odpowiedz
+  Adobe
 </details>
 
 ```
-komentarz, wyjasnienie etc
+Na podstawie informacji z DiE i VT wiemy że mamy do czynienia z *.NET executable* Przydatnym narzędziem będzie teraz dnSpy. Analizując ten .exe w narzędziu widzimy metadane assembly. Jest tam wskzówka do odpowiedzi.
 ```
 
-#### Qx
-pytanie
+#### Q3
+How many anti-analysis checks does the malware perform to detect/evade sandboxes and debugging environments?
 <details>
   <summary>Answer: Click me</summary>
-  odpowiedz
+  5
 </details>
 
 ```
-komentarz, wyjasnienie etc
+Przechodząc pod adresy entrypoint trafiamy do klasy *oQm0xzosrWM7CGTCsMZCODumwvt5ODG1drdBoIeM03A6xt9SK5NFYiMYXb1U* w której dokonuje się kilka ważnych rzeczy. Jest sleep, odszyfrowanie configu, anti-debug, drop pliku na dysk, perstystencja, wyłaczenie Defendera, no i start głównej logiki (wiele wątków). W tym pytaniu interesuje nas część anti-debug. W kodzie widzimy artefkaty sprawdzające: VM-detection, Debuger detection, Sandbox detection, OS check(Win XP), hosting/VPS detection
 ```
 
 #### Qx
@@ -134,3 +134,32 @@ komentarz, wyjasnienie etc
 
 10. Defense Evasion
   - asdf
+
+# analiza malware
+
+1. plik .exe, podszywanie sie pod adobe
+|
+v
+2. 
+
+
+***
+# lessons&learned
+- DiE do szybkiego zorientowania się z jakiego rodzaju plikiem mamy do czynienia
+- dnSpy do do pracy z plikami .NET
+- nagłowek pliku dostarcza metadanych, między innymi entrypoint
+- analiza startowej funkcji (main lub podobne)
+- przykłądy sprawdzenia anty debug:
+  - Wykrywanie maszyny wirtualnej (VM detection)
+  ```
+  new ManagementObjectSearcher("Select * from Win32_ComputerSystem")
+
+  string text = ...["Manufacturer"].ToString().ToLower();
+
+if (text.Contains("vmware") ||
+    model.Contains("VIRTUAL") ||
+    model == "VirtualBox")
+{
+    return true;
+}
+  ```
