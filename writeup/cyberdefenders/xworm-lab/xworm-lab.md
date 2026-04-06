@@ -46,7 +46,109 @@ How many anti-analysis checks does the malware perform to detect/evade sandboxes
 </details>
 
 ```
-Przechodząc pod adresy entrypoint trafiamy do klasy *oQm0xzosrWM7CGTCsMZCODumwvt5ODG1drdBoIeM03A6xt9SK5NFYiMYXb1U* w której dokonuje się kilka ważnych rzeczy. Jest sleep, odszyfrowanie configu, anti-debug, drop pliku na dysk, perstystencja, wyłaczenie Defendera, no i start głównej logiki (wiele wątków). W tym pytaniu interesuje nas część anti-debug. W kodzie widzimy artefkaty sprawdzające: VM-detection, Debuger detection, Sandbox detection, OS check(Win XP), hosting/VPS detection
+Przechodząc pod adresy entrypoint trafiamy do klasy *oQm0xzosrWM7CGTCsMZCODumwvt5ODG1drdBoIeM03A6xt9SK5NFYiMYXb1U* w której dokonuje się kilka ważnych rzeczy. Jest sleep, odszyfrowanie configu, anti-debug, drop pliku na dysk, perstystencja, wyłaczenie Defendera, no i start głównej logiki (wiele wątków). W tym pytaniu interesuje nas część anti-debug. W kodzie widzimy artefkaty sprawdzające: VM-detection, Debuger detection, Sandbox detection, OS check(Win XP), hosting/VPS detection. Szczegóły i przylady takich technik (i odnalezionych artefaktów) w sekcji LessonsLearned
+```
+
+#### Q4
+What is the name of the scheduled task created by the malware to achieve execution with elevated privileges?
+<details>
+  <summary>Answer: Click me</summary>
+  WmiPrvSE
+</details>
+
+```
+No tutaj żeby zacząc odpowiadać zaczyna sie juz poważna praca do wykonania... Klasa którą analizowaliśmy w Q3 pełna jest zaobfuskowanych metod, funkcji etc. I tak żeby poznać nazwę pliku:
+  ```
+  {
+					processStartInfo.Arguments = string.Concat(new string[]
+					{
+						"/create /f /RL HIGHEST /sc minute /mo 1 /tn \"",
+						Path.GetFileNameWithoutExtension(NB2mi1VBTSN5U40DfEsDcrzgxWCrxt7i1yCoMW0Zb5dK9QwIjZ6W6wYeHriq.EB5J4sIzfH74BwfgRjacCtnEuNWFxu93z57nr4HrttTW5asXOhadv7pC7YFu),
+						"\" /tr \"",
+						text,
+						"\""
+					});
+				}
+  ```
+
+yEA8oSg5e02FNWc6DpGE
+```
+
+#### Q5
+pytanie
+<details>
+  <summary>Answer: Click me</summary>
+  odpowiedz
+</details>
+
+```
+komentarz, wyjasnienie etc
+```
+
+#### Q6
+Which cryptographic algorithm does the malware use to encrypt or obfuscate its configuration data?
+<details>
+  <summary>Answer: Click me</summary>
+  AES
+</details>
+
+```
+komentarz, wyjasnienie etc
+```
+
+#### Q7
+pytanie
+<details>
+  <summary>Answer: Click me</summary>
+  odpowiedz
+</details>
+
+```
+komentarz, wyjasnienie etc
+```
+
+#### Q8
+pytanie
+<details>
+  <summary>Answer: Click me</summary>
+  odpowiedz
+</details>
+
+```
+komentarz, wyjasnienie etc
+```
+
+#### Qx
+pytanie
+<details>
+  <summary>Answer: Click me</summary>
+  odpowiedz
+</details>
+
+```
+komentarz, wyjasnienie etc
+```
+
+#### Qx
+pytanie
+<details>
+  <summary>Answer: Click me</summary>
+  odpowiedz
+</details>
+
+```
+komentarz, wyjasnienie etc
+```
+
+#### Qx
+pytanie
+<details>
+  <summary>Answer: Click me</summary>
+  odpowiedz
+</details>
+
+```
+komentarz, wyjasnienie etc
 ```
 
 #### Qx
