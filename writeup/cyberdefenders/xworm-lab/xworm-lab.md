@@ -101,6 +101,25 @@ public class yEA8oSg5e02FNWc6DpGE
 			byte[] array2 = Convert.FromBase64String(3pXqYfeWgCBZOAYUjYnh);
 			return ACX0qTJzEzq40qP5qFxb.sJljw7gGxcYB8jRe1fPv(cryptoTransform.TransformFinalBlock(array2, 0, array2.Length));
 		}
+
+uff, ale to jeszcze nie koniec...
+Zauważyć można kilka istotnych informacji:
+RijndaelManaged - algorytm AES
+CipherMode.ECB - tryb ECB
+tworzenie tablicy 32 bajty (dla klucza deszyfrującego, który będzie utworzony w specyficzny sposób)
+md5CryptoServiceProvider.ComputeHash - najistotniejszy element gdzie obliczne jest MD5 dla wartości początkowej pobranej z DhMybcleyUJ8bZbaqtAkL3FTz6SQ840xELBsFWt9yekNCVYQ1WgRtjL1bTF3
+public static string DhMybcleyUJ8bZbaqtAkL3FTz6SQ840xELBsFWt9yekNCVYQ1WgRtjL1bTF3 = "8xTJ0EKPuiQsJVaT";
+istotny jest też fragment tworzenia zawartości tablicy:
+      Array.Copy(sourceArray, 0, array, 0, 16);
+			Array.Copy(sourceArray, 0, array, 15, 16);
+
+Dziłanie w praktyce:
+string(8xTJ0EKPuiQsJVaT) jest obliczny przez MD5
+wynik wypełnia pierwszych 16 bajtów tablicy(od 0 do 15) , nastepnie dodawana jest ta sama wartość do tablicy ale począwszy od pozycji 15 (co powoduje nadpisanie jednego bajtu), do reszty dodane sa 0 aby wypełnić tablicę do 32 bajtów. W efekcie otrzymujemy klucz deszyfrujący do elementów config'u malware.
+```
+Postac klucza:
+```
+aecd2c6f5b77e319e535564f1fd601aecd2c6f5b77e319e535564f1fd601d300
 ```
 
 #### Q5
@@ -129,7 +148,7 @@ komentarz, wyjasnienie etc
 pytanie
 <details>
   <summary>Answer: Click me</summary>
-  odpowiedz
+  8xTJ0EKPuiQsJVaT
 </details>
 
 ```
