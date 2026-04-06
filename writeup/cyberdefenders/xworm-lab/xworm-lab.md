@@ -58,8 +58,7 @@ What is the name of the scheduled task created by the malware to achieve executi
 
 ```
 No tutaj żeby zacząc odpowiadać zaczyna sie juz poważna praca do wykonania... Klasa którą analizowaliśmy w Q3 pełna jest zaobfuskowanych metod, funkcji etc. I tak żeby poznać nazwę pliku:
-  ```
-  {
+    {
 					processStartInfo.Arguments = string.Concat(new string[]
 					{
 						"/create /f /RL HIGHEST /sc minute /mo 1 /tn \"",
@@ -69,7 +68,6 @@ No tutaj żeby zacząc odpowiadać zaczyna sie juz poważna praca do wykonania..
 						"\""
 					});
 				}
-  ```
 
 yEA8oSg5e02FNWc6DpGE
 ```
