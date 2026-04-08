@@ -123,14 +123,17 @@ aecd2c6f5b77e319e535564f1fd601aecd2c6f5b77e319e535564f1fd601d300
 ```
 
 #### Q5
-pytanie
+What is the filename of the malware binary that is dropped in the AppData directory?
 <details>
   <summary>Answer: Click me</summary>
-  odpowiedz
+  WmiPrvSE.exe
 </details>
 
 ```
-komentarz, wyjasnienie etc
+Posiadając klucz deszyfrujący mozemy odszyfrować fragemnt:
+string text = NB2mi1VBTSN5U40DfEsDcrzgxWCrxt7i1yCoMW0Zb5dK9QwIjZ6W6wYeHriq.pAiK6SOy8HEO6uDLFXMlZSPdAbNKgcHqwR32QBERmGnbcKxg5SelHoKfUgGc + "\\" + NB2mi1VBTSN5U40DfEsDcrzgxWCrxt7i1yCoMW0Zb5dK9QwIjZ6W6wYeHriq.EB5J4sIzfH74BwfgRjacCtnEuNWFxu93z57nr4HrttTW5asXOhadv7pC7YFu;
+gdzie jest konkatenacja:
+%AppData% + // + *nasa odpowiedź"
 ```
 
 #### Q6
@@ -141,117 +144,117 @@ Which cryptographic algorithm does the malware use to encrypt or obfuscate its c
 </details>
 
 ```
-komentarz, wyjasnienie etc
+Obszerne wytłumaczenie w Q4 wskazuje na klase która tworzy klucz deszyfrujący, jest tam wskazówka do odpowidzi.
 ```
 
 #### Q7
-pytanie
+To derive the parameters for its encryption algorithm (such as the key and initialization vector), the malware uses a hardcoded string as input. What is the value of this hardcoded string?
 <details>
   <summary>Answer: Click me</summary>
   8xTJ0EKPuiQsJVaT
 </details>
 
 ```
-komentarz, wyjasnienie etc
+Obszerne wytłumaczenie w Q4 wskazuje na klase która tworzy klucz deszyfrujący, wczytując się w logikę tworzenia klucza natrafiamy na odniesienie do string'u który jest odpowiedzią.
 ```
 
 #### Q8
-pytanie
+What are the Command and Control (C2) IP addresses obtained after the malware decrypts them?
 <details>
   <summary>Answer: Click me</summary>
-  odpowiedz
+  185.117.250.169,66.175.239.149,185.117.249.43
+</details>
+
+```
+Posiadając klucz do deszyforwania w klasie NB2mi1VBTSN5U40DfEsDcrzgxWCrxt7i1yCoMW0Zb5dK9QwIjZ6W6wYeHriq odnajdujemy cały config. Deszyfrując wartości z tej klasy wypada między innymi zest adresów IP który wykorzystywany jest w klasie która wygląda na nawiązywanie komunikacji i sterowanie przepływem danych.
+```
+
+#### Q9
+What port number does the malware use for communication with its Command and Control (C2) server?
+<details>
+  <summary>Answer: Click me</summary>
+  7000
+</details>
+
+```
+Analogicznie do pytania Q8
+```
+
+#### Q10
+The malware spreads by copying itself to every connected removable device. What is the name of the new copy created on each infected device?
+<details>
+  <summary>Answer: Click me</summary>
+  USB.exe
+</details>
+
+```
+W konfigu nattafiamy na ciekawy string który jest wykorzytywany w klasze która wygląda jak mechanizm replkiacji na wszystkich urządzeniach typu pendrive.
+```
+
+#### Q11
+To ensure its execution, the malware creates specific types of files. What is the file extension of these created files?
+<details>
+  <summary>Answer: Click me</summary>
+  .lnk
+</details>
+
+```
+Analogicznie do Q10 w kodzie widzmy tworzenie plików o rozszerzeniu bedącym odpowiedzia na to pytanie.
+```
+
+#### Q12
+What is the name of the DLL the malware uses to detect if it is running in a sandbox environment?
+<details>
+  <summary>Answer: Click me</summary>
+  SbieDll.dll
+</details>
+
+```
+To pytanie znowu wysyła nas do etapu w którym analizowalismy klasę wskazaną przez entrypoint. Do analizu kodu zabezpieczeń anty-debug. Trochę dziwne miejsce na to pytanie, powinno paść wcześniej. Bardziej by pasowało do rozwijajacej się analizy tego malware.
+```
+
+#### Q13
+What is the name of the registry key manipulated by the malware to control the visibility of hidden items in Windows Explorer?
+<details>
+  <summary>Answer: Click me</summary>
+  ShowSuperHidden
+</details>
+
+```
+Przeglądając kolejne klasy natrafiamyna VRti6vhPYugo9GdL3aQYj2eDRdhSfKIazXyfNr18qkYGBHO0iTkiZoRtMwtI7vEZAaW8tY"fk5m7J2 w której znajdziemy rejestr "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced" widzmy manipulajce wartością rejestru "ShowSuperHidden"
+```
+
+#### Q14
+Which API does the malware use to mark its process as critical in order to prevent termination or interference?
+<details>
+  <summary>Answer: Click me</summary>
+  RtlSetProcessIsCritical
+</details>
+
+```
+W klasie ke48iewt5U3eoIMbjLCt możemy odnaleść wywołanie biblioteki NTdll.dll która to wywołu API które jest odpowiedzia na to pytanie. Funkcja ta słuzy do oznaczania procesu jako Critical Process
+```
+
+#### Q15
+Which API does the malware use to insert keyboard hooks into running processes in order to monitor or capture user input?
+<details>
+  <summary>Answer: Click me</summary>
+  SetWindowsHookEx
 </details>
 
 ```
 komentarz, wyjasnienie etc
 ```
 
-#### Qx
-pytanie
+#### Q16
+Given the malware’s ability to insert keyboard hooks into running processes, what is its primary functionality or objective?
 <details>
   <summary>Answer: Click me</summary>
   odpowiedz
 </details>
 
 ```
-komentarz, wyjasnienie etc
-```
-
-#### Qx
-pytanie
-<details>
-  <summary>Answer: Click me</summary>
-  odpowiedz
-</details>
-
-```
-komentarz, wyjasnienie etc
-```
-
-#### Qx
-pytanie
-<details>
-  <summary>Answer: Click me</summary>
-  odpowiedz
-</details>
-
-```
-komentarz, wyjasnienie etc
-```
-
-#### Qx
-pytanie
-<details>
-  <summary>Answer: Click me</summary>
-  odpowiedz
-</details>
-
-```
-komentarz, wyjasnienie etc
-```
-
-#### Qx
-pytanie
-<details>
-  <summary>Answer: Click me</summary>
-  odpowiedz
-</details>
-
-```
-komentarz, wyjasnienie etc
-```
-
-#### Qx
-pytanie
-<details>
-  <summary>Answer: Click me</summary>
-  odpowiedz
-</details>
-
-```
-komentarz, wyjasnienie etc
-```
-
-#### Qx
-pytanie
-<details>
-  <summary>Answer: Click me</summary>
-  odpowiedz
-</details>
-
-```
-komentarz, wyjasnienie etc
-```
-
-#### Qx
-pytanie
-<details>
-  <summary>Answer: Click me</summary>
-  odpowiedz
-</details>
-
-```
-komentarz, wyjasnienie etc
+Wykorzystując wiedzę że mamy doczynienia z .NET ,powinniśmy szukać wokoło DLL które mają funkcje związane z przechwytywaniem znaków z klawiatury. W jednej z klas odnajdziemy fragment kodu który wywołuje jedną z takich funkcji z bilbioteki user32.dll
 ```
 
 ## tl;dr czyli Kill Chain
@@ -340,6 +343,8 @@ new ComputerInfo().OSFullName.ToLower().Contains("xp")
 ```
 new WebClient().DownloadString("http://ip-api.com/line/?fields=hosting")
 ```
+
+Wykorzystanie Funkcji *RtlSetProcessIsCritical* z bibltioteki NTdll.dll do oznaczania procecu jako krytyczny. Terminowanie takiego procesu spowoduje zawieszenie systemu co będzie bardzo mocnym zabezpieczeniem przed ubiciem/amaliza/forensic
 
 ***
 # TEST AREA
