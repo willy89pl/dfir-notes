@@ -20,11 +20,22 @@ Azure AD Sign-in Logs
 The investigation begins by analyzing a password spray attack that targeted several users in the primary tenant. What IP address did the attacker originate the password spray attack from?
 <details>
   <summary>Answer: Click me</summary>
-  odpowiedz
+  52.59.240.166
 </details>
 
 ```
-komentarz, wyjasnienie etc
+Najważniejsze to dobrze zaczac... Są o logi custom, więcej trzeba najpierw przyjrzeć się zawartośi kolumn, wyszukac interesujace wskażniki.
+Ciekawe zapytanie które nam może pomóc zbudowane poniżej: szuka nieudanych logowań , grupujac po adresie ip, i zliaczajac to w okresach 5min. Operujac odpowiednio oknem czasu i ilością nieudanych prób można uzyskac ciekawy i przejrzysty efekt. Mylące jest rochę pytanie o password sprawy bo nie do końca to odpowiada typowemy password spray
+```
+```sql
+InteractiveSignIns_CL
+| where Status == "Failure"
+| summarize 
+    FailedAttempts = count(),
+    UniqueUsers = dcount(Username)
+by IPAddress, bin(EventTime, 5m)
+| where FailedAttempts > 1 and UniqueUsers > 1
+| order by EventTime desc
 ```
 
 #### Qx
