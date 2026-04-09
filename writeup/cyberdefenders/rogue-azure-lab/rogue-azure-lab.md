@@ -1,4 +1,4 @@
-# Tytuł labka
+# Rogue Azure Lab
 Reconstruct a multi-stage Azure attack timeline by analyzing Entra ID, Audit, and Storage Blob logs using Kusto Query Language to identify initial access, persistence, privilege escalation, and data exfiltration.
 
 ## Scenario
