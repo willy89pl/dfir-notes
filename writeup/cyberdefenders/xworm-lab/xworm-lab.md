@@ -325,16 +325,14 @@ Wykorzystanie Funkcji *RtlSetProcessIsCritical* z bibltioteki NTdll.dll do oznac
 
 Biblioteki które powinny zwrócić uwagę i funkcje które byly zauważone w trakcie analizy:
 
-| # | Technika | Opis | Elementy w kodzie | DLL |
-|---|----------|------|------------------|-----|
-| 1 | Anti-idle (sandbox evasion) | Sprawdza czas od ostatniej aktywności użytkownika | `GetLastInputInfo`, `h4YWokwK2v5abqDmF2ey()`, `COPd5Jf3NPKSOltCTNzb()` | user32.dll |
-| 2 | Monitoring aktywnego okna | Pobiera tytuł aktywnego okna | `GetForegroundWindow`, `GetWindowText`, `0zLgxXHB6cL3mNjINmjl()` | user32.dll |
-| 3 | Mutex (single instance) | Zapobiega uruchomieniu wielu instancji | `Mutex`, `6NEoy1ymZv4FH17VRKK3()` | kernel32.dll (.NET wrapper) |
-| 4 | Fingerprinting (HWID) | Generuje identyfikator systemu | `Environment.*`, `DriveInfo`, `UcesiuD63UbvpVCA0kUs()` | brak (czysty .NET) |
-| 5 | Persistence (rejestr) | Zapis/odczyt danych w rejestrze | `Registry.CurrentUser.CreateSubKey`, `SetValue`, `GetValue` | advapi32.dll (.NET wrapper) |
-| 6 | Anti-sleep | Zapobiega usypianiu systemu | `SetThreadExecutionState`, `t93znx36c8iu2Asm9DOL()` | kernel32.dll |
-| 7 | Obfuskacja stringów | Szyfrowanie AES + MD5 | `RijndaelManaged`, `MD5CryptoServiceProvider` | brak (System.Security.Cryptography) |
-| 8 | Kompresja payloadu | Kompresja/dekompresja danych | `GZipStream`, `MemoryStream` | brak (System.IO.Compression) |
-| 9 | Randomizacja | Generowanie losowych stringów | `Random`, `zbKFDeA5N6mOiLwTQUAt()` | brak |
-| 10 | Clipboard hijacking | Podmiana adresów krypto w schowku | `AddClipboardFormatListener`, `WndProc` | user32.dll |
-
+| DLL | Element w kodzie | Opis | Technika |
+|-----|------------------|------|----------|
+| user32.dll | GetLastInputInfo | Sprawdza czas od ostatniej aktywności użytkownika (wykrywanie bezczynności sandboxa) | Anti-idle (sandbox evasion) |
+| user32.dll | GetForegroundWindow, GetWindowText | Pobiera tytuł aktywnego okna użytkownika | Monitoring aktywnego okna |
+| kernel32.dll | CreateMutex | Zapobiega uruchomieniu wielu instancji malware | Mutex (single instance) |
+| advapi32.dll | RegCreateKeyEx, RegSetValueEx, RegQueryValueEx | Zapis i odczyt danych w rejestrze systemowym | Persistence (rejestr) |
+| kernel32.dll | SetThreadExecutionState | Zapobiega przejściu systemu w stan uśpienia | Anti-sleep |
+| brak (.NET) | RijndaelManaged, MD5CryptoServiceProvider | Szyfrowanie/odszyfrowywanie danych i stringów | Obfuskacja stringów |
+| brak (.NET) | GZipStream | Kompresja i dekompresja danych | Kompresja payloadu |
+| brak (.NET) | Random | Generowanie losowych wartości | Randomizacja |
+| user32.dll | AddClipboardFormatListener | Monitorowanie zmian w schowku systemowym | Clipboard hijacking |
