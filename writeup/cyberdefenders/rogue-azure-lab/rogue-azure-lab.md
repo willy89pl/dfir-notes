@@ -115,26 +115,34 @@ What highly privileged role was assigned to the second user account to grant it 
 Analogicznie do Q7.
 ```
 
-#### Qx
-pytanie
+#### Q9
+The attacker's final objective was data exfiltration. They targeted a specific storage resource to access sensitive files. What is the name of the storage account they accessed?
 <details>
   <summary>Answer: Click me</summary>
-  odpowiedz
+  mainstoragestore01
 </details>
 
 ```
-komentarz, wyjasnienie etc
+Aby odpowiedzieć na tą część musimy sie tym razem przenieść do kolejnej tabeli z logami (StorageBlobLogs_CL). Tutaj znajdziemy logi dostępu do plików.
+Jako że są to logi custom, informacje sa nieco inne niż w typowej tabeli. nie ma wprost adresów ip tylko cały socket (ip:port).
+Poniżej proste zapytanie którym wyfiltrujemy logi do operacji wykonanych z ip adwersarza. Przy OperationName: GetBlob znajdziemy odpowiedź.
+
+```
+```sql
+StorageBlobLogs_CL
+|extend ip = split(CallerIpAddress, ":")[0]
+|where  tostring(ip) == "52.221.180.165"
 ```
 
-#### Qx
-pytanie
+#### Q10
+The attacker successfully downloaded a sensitive file from the storage account. What is the name of the exfiltrated file?
 <details>
   <summary>Answer: Click me</summary>
-  odpowiedz
+  Confidintal.png
 </details>
 
 ```
-komentarz, wyjasnienie etc
+Analogicznie do Q9, w Uri zawarta jest odpowiedź.
 ```
 
 
@@ -144,7 +152,7 @@ komentarz, wyjasnienie etc
   - udane zalogowanie na mharmon@compliantsecure.store [2025-11-14T21:56:25Z]
 
 2. Command & Control (C2)
-  - logowanie na przejętych poświadczeniach z nowej lokalizacji [Singapore] [52.221.180.165], [2025-11-14T23:34:34Z]
+  - logowanie na przejętych poświadczeniach z nowej lokalizacji (Singapore, 52.221.180.165), [2025-11-14T23:34:34Z]
 
 3. Persistence
   - utworzenie aplikacji (OfficeRead[2025-11-14T23:35:14.961145Z], VaultApp[2025-11-14T23:35:52.755978Z])
@@ -153,4 +161,15 @@ komentarz, wyjasnienie etc
   - podniesienie uprawnień na Global Administrator dla kolejnego usera (lwilliams@compliantsecure.store) [2025-11-14T23:38:03.510353Z]
 
 5. Collection & Exfiltration
-  - 
+  - Wykonanie operacji pobrania https://mainstoragestore01.blob.core.windows.net:443/conf-images/Confidintal.png [brak znacznika czasu w logach]
+
+# Lessons&Learned
+
+| Tabela | Co zawiera | Do czego używać | Przykładowe pola |
+|------|-----------|----------------|------------------|
+| InteractiveSignIns_CL | Logowania użytkowników (interaktywne) | Wykrywanie brute force, podejrzanych logowań, MFA bypass | Username, IPAddress, Status, EventTime, UserAgent |
+| AuditLogs_CL | Zmiany w Azure AD / działania administracyjne | Wykrywanie zmian uprawnień, tworzenia aplikacji, consentów | Activity, Result, ActorUserPrincipalName, IPAddress |
+| StorageBlobLogs_CL | Dostęp do plików w Azure Storage | Wykrywanie data exfiltration, masowego pobierania danych | OperationName, CallerIpAddress, RequesterUpn, Uri, StatusText |
+
+
+Blob (Binary Large Object) - czyli zasadniczo każdy plik w storage
