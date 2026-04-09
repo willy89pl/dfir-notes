@@ -14,6 +14,131 @@ Praca na logach w Splunk. Logi a webserwera i AD.
 The attacker performed service enumeration on the target web server to identify the content management system. What CMS platform was discovered hosting the website?
 <details>
   <summary>Answer: Click me</summary>
+  przechodząc do sourcetype związanego z logami serwera www od razu rzuca nam się nazwa CMS'a.
+</details>
+
+```
+komentarz, wyjasnienie etc
+```
+
+#### Q2
+A specialized scanning tool was deployed to enumerate CMS-specific vulnerabilities. What is the name and version of the scanning tool used against the CMS?
+<details>
+  <summary>Answer: Click me</summary>
+  WPScan, 3.8.28
+</details>
+
+```
+Patrzać na używane useragenty narzędzia same nam się przedstawiają. Możemy tez użyć prostego zapytanie SPL.
+```
+```sql
+index=* sourcetype=access_combined
+| stats count by useragent
+```
+
+#### Qx
+pytanie
+<details>
+  <summary>Answer: Click me</summary>
+  odpowiedz
+</details>
+
+```
+komentarz, wyjasnienie etc
+```
+
+#### Qx
+pytanie
+<details>
+  <summary>Answer: Click me</summary>
+  odpowiedz
+</details>
+
+```
+komentarz, wyjasnienie etc
+```
+
+#### Qx
+pytanie
+<details>
+  <summary>Answer: Click me</summary>
+  odpowiedz
+</details>
+
+```
+komentarz, wyjasnienie etc
+```
+
+#### Qx
+pytanie
+<details>
+  <summary>Answer: Click me</summary>
+  odpowiedz
+</details>
+
+```
+komentarz, wyjasnienie etc
+```
+
+#### Qx
+pytanie
+<details>
+  <summary>Answer: Click me</summary>
+  odpowiedz
+</details>
+
+```
+komentarz, wyjasnienie etc
+```
+
+#### Qx
+pytanie
+<details>
+  <summary>Answer: Click me</summary>
+  odpowiedz
+</details>
+
+```
+komentarz, wyjasnienie etc
+```
+
+#### Qx
+pytanie
+<details>
+  <summary>Answer: Click me</summary>
+  odpowiedz
+</details>
+
+```
+komentarz, wyjasnienie etc
+```
+
+#### Qx
+pytanie
+<details>
+  <summary>Answer: Click me</summary>
+  odpowiedz
+</details>
+
+```
+komentarz, wyjasnienie etc
+```
+
+#### Qx
+pytanie
+<details>
+  <summary>Answer: Click me</summary>
+  odpowiedz
+</details>
+
+```
+komentarz, wyjasnienie etc
+```
+
+#### Qx
+pytanie
+<details>
+  <summary>Answer: Click me</summary>
   odpowiedz
 </details>
 
