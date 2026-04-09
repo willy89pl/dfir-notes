@@ -243,50 +243,20 @@ Which API does the malware use to insert keyboard hooks into running processes i
 </details>
 
 ```
-komentarz, wyjasnienie etc
+Wykorzystując wiedzę że mamy doczynienia z .NET ,powinniśmy szukać wokoło DLL które mają funkcje związane z przechwytywaniem znaków z klawiatury. W jednej z klas odnajdziemy fragment kodu który wywołuje jedną z takich funkcji z bilbioteki user32.dll
 ```
 
 #### Q16
 Given the malware’s ability to insert keyboard hooks into running processes, what is its primary functionality or objective?
 <details>
   <summary>Answer: Click me</summary>
-  odpowiedz
+  Keylogger
 </details>
 
 ```
-Wykorzystując wiedzę że mamy doczynienia z .NET ,powinniśmy szukać wokoło DLL które mają funkcje związane z przechwytywaniem znaków z klawiatury. W jednej z klas odnajdziemy fragment kodu który wywołuje jedną z takich funkcji z bilbioteki user32.dll
+Sumując wszystkie informacje które odkryliśmy w trakcie kodu źródłowego i dokonując OSINT o malware oraz uwzględniając sens pytania możemy postawić odpowiedź.
 ```
 
-## tl;dr czyli Kill Chain
-1. Initial Access & Reconnaissance
-  - asdf
-
-2. Execution
-  - asdf
-
-3. Discovery/Enumeration
-  - asdf
-
-4. Credential Access 
-  - asdf
-
-5. Lateral Movement
-  - asdf
-
-6. Privilege Escalation
-  - asdf
-
-7. Container Escape
-  - asdf
-
-8. Command & Control (C2)
-  - asdf
-
-9. Persistence & Impact
-  - asdf
-
-10. Defense Evasion
-  - asdf
 
 # analiza malware
 
@@ -303,6 +273,13 @@ v
   - Persistence (3 metody!)
   - Wyłączenie Windows Defendera
   - Start wielu wątków (główna logika malware)
+
+  |zdolności malware
+  v
+    - wykradanie portfeli kryptowalut
+    - keylogging
+    - rozpstrzenianie się na urządenia przenośne
+
 
 
 ***
@@ -346,32 +323,18 @@ new WebClient().DownloadString("http://ip-api.com/line/?fields=hosting")
 
 Wykorzystanie Funkcji *RtlSetProcessIsCritical* z bibltioteki NTdll.dll do oznaczania procecu jako krytyczny. Terminowanie takiego procesu spowoduje zawieszenie systemu co będzie bardzo mocnym zabezpieczeniem przed ubiciem/amaliza/forensic
 
-***
-# TEST AREA
+Biblioteki które powinny zwrócić uwagę i funkcje które byly zauważone w trakcie analizy:
 
-graph TD
-    %% Definicja węzłów
-    A[Domain: lumafrost.com] -- DNS --> B(IP: 194.26.x.x)
-    B -- Scan --> C{Port 443}
-    
-    %% Logika decyzji
-    C -- "JARM Hash" --> D[Pivot: star-service.website]
-    C -- "HTML Body" --> E[Network Device Login]
-    
-    %% Stylizacja (opcjonalna)
-    style E fill:#f96,stroke:#333,stroke-width:2px
-    style A fill:#bbf,stroke:#333
+| # | Technika | Opis | Elementy w kodzie | DLL |
+|---|----------|------|------------------|-----|
+| 1 | Anti-idle (sandbox evasion) | Sprawdza czas od ostatniej aktywności użytkownika | `GetLastInputInfo`, `h4YWokwK2v5abqDmF2ey()`, `COPd5Jf3NPKSOltCTNzb()` | user32.dll |
+| 2 | Monitoring aktywnego okna | Pobiera tytuł aktywnego okna | `GetForegroundWindow`, `GetWindowText`, `0zLgxXHB6cL3mNjINmjl()` | user32.dll |
+| 3 | Mutex (single instance) | Zapobiega uruchomieniu wielu instancji | `Mutex`, `6NEoy1ymZv4FH17VRKK3()` | kernel32.dll (.NET wrapper) |
+| 4 | Fingerprinting (HWID) | Generuje identyfikator systemu | `Environment.*`, `DriveInfo`, `UcesiuD63UbvpVCA0kUs()` | brak (czysty .NET) |
+| 5 | Persistence (rejestr) | Zapis/odczyt danych w rejestrze | `Registry.CurrentUser.CreateSubKey`, `SetValue`, `GetValue` | advapi32.dll (.NET wrapper) |
+| 6 | Anti-sleep | Zapobiega usypianiu systemu | `SetThreadExecutionState`, `t93znx36c8iu2Asm9DOL()` | kernel32.dll |
+| 7 | Obfuskacja stringów | Szyfrowanie AES + MD5 | `RijndaelManaged`, `MD5CryptoServiceProvider` | brak (System.Security.Cryptography) |
+| 8 | Kompresja payloadu | Kompresja/dekompresja danych | `GZipStream`, `MemoryStream` | brak (System.IO.Compression) |
+| 9 | Randomizacja | Generowanie losowych stringów | `Random`, `zbKFDeA5N6mOiLwTQUAt()` | brak |
+| 10 | Clipboard hijacking | Podmiana adresów krypto w schowku | `AddClipboardFormatListener`, `WndProc` | user32.dll |
 
-
-┌─────────────┐                             
-│             ┼───────────────────────┐     
-│             ┼────────────────────┐  │     
-│             │                    │  │     
-└─────────────┘                    │  │     
-                            ┌─────────▼────┐
-                            │              │
-                            │              │
-                            │              │
-                            │              │
-                            │              │
-                            └──────────────┘
