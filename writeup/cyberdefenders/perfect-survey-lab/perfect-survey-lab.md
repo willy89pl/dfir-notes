@@ -14,11 +14,11 @@ Praca na logach w Splunk. Logi a webserwera i AD.
 The attacker performed service enumeration on the target web server to identify the content management system. What CMS platform was discovered hosting the website?
 <details>
   <summary>Answer: Click me</summary>
-  przechodząc do sourcetype związanego z logami serwera www od razu rzuca nam się nazwa CMS'a.
+  Wordpress
 </details>
 
 ```
-komentarz, wyjasnienie etc
+Przechodząc do sourcetype związanego z logami serwera www od razu rzuca nam się nazwa CMS'a.
 ```
 
 #### Q2
