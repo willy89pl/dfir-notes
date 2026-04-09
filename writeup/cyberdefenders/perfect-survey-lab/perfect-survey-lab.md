@@ -36,37 +36,37 @@ index=* sourcetype=access_combined
 | stats count by useragent
 ```
 
-#### Qx
-pytanie
+#### Q3
+Throughout the attack chain, all malicious traffic originated from a single source IP address used by the threat actor. What is the IP address that the threat actor used for their attack?
 <details>
   <summary>Answer: Click me</summary>
-  odpowiedz
+  47.128.63.0
 </details>
 
 ```
-komentarz, wyjasnienie etc
+Adres związany z skanowaniem wykonywanym przez WPScan.
 ```
 
-#### Qx
-pytanie
+#### Q4
+The scanner identified a vulnerable third-party plugin installed on the CMS. What is the name of this vulnerable plugin?
 <details>
   <summary>Answer: Click me</summary>
-  odpowiedz
+  Perfect Survey
 </details>
 
 ```
-komentarz, wyjasnienie etc
+Skupiamy się na zapytaniach z WPScan, odrzucamy nieudane zapytania, na liście uri_path nzjadziemy udane zapytania z ścieżką /plugins/
 ```
 
-#### Qx
-pytanie
+#### Q5
+The attacker attempted to exploit the vulnerable plugin for remote code execution. At what exact timestamp did the scanning tool attempt the RCE exploit? (in 24-hour format)
 <details>
   <summary>Answer: Click me</summary>
-  odpowiedz
+  2025-09-18 02:25
 </details>
 
 ```
-komentarz, wyjasnienie etc
+Po wykryciu podatnego pluginu, zmienia się narzędzie do jego exploitacji. Wykorzystany zostaje sqlmap. Przyadje się też OSINT wiedza o podatnościach w perfect-survey. Przeglądając pierwsze zapytania z sqlmapa widzimy kombi zapytanie które próbuje jednocześnie: sqli, xss, rce. CZas tego zapytania to odpowiedź.
 ```
 
 #### Qx
@@ -159,8 +159,12 @@ komentarz, wyjasnienie etc
 
 
 ## tl;dr czyli Kill Chain
-1. Initial Access & Reconnaissance
-  - asdf
+1. Reconnaissance
+  - skonowanie Wordpressa za pomocą WPScan z adresu 47.128.63.0 [2025-09-18 02:15:00] ~ [2025-09-18 02:20:00]
+
+2. Initial Access
+  - Wykrycie podatnego pluginu Perfect Survey [2025-09-18T02:20:16.000+00:00]
+  - Exploitacja podatności narzędziem sqlmap od [2025-09-18T02:23:39.000+00:00]
 
 2. Execution
   - asdf
