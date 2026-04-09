@@ -262,7 +262,7 @@ Sumując wszystkie informacje które odkryliśmy w trakcie kodu źródłowego i 
 
 1. plik .exe, podszywanie sie pod adobe
 
-|entrypoint
+entrypoint
 v
 
 2. główna funkcja:
@@ -274,11 +274,11 @@ v
   - Wyłączenie Windows Defendera
   - Start wielu wątków (główna logika malware)
 
-  |zdolności malware
+  zdolności malware
   v
-    - wykradanie portfeli kryptowalut
-    - keylogging
-    - rozpstrzenianie się na urządenia przenośne
+  - wykradanie portfeli kryptowalut
+  - keylogging
+  - rozpstrzenianie się na urządenia przenośne
 
 
 
