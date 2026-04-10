@@ -69,33 +69,50 @@ The attacker attempted to exploit the vulnerable plugin for remote code executio
 Po wykryciu podatnego pluginu, zmienia się narzędzie do jego exploitacji. Wykorzystany zostaje sqlmap. Przyadje się też OSINT wiedza o podatnościach w perfect-survey. Przeglądając pierwsze zapytania z sqlmapa widzimy kombi zapytanie które próbuje jednocześnie: sqli, xss, rce. CZas tego zapytania to odpowiedź.
 ```
 
-#### Qx
-pytanie
+#### Q6
+An automated tool was used to extract password hashes from the CMS database. What database field name did the tool extract containing the password hash?
 <details>
   <summary>Answer: Click me</summary>
-  odpowiedz
+  user_pass
 </details>
 
 ```
-komentarz, wyjasnienie etc
+Przeglądajac dalsze zapytania sqlmap możemy widać Blind SQLi. zapytania wyciągają nazwę użytkownika a następnie hash pliku. Przeglądanie zapytań w Splunk ożemy sobie uczytelnić używając urldecode() PRzykąłd zapytania poniżej.
+```
+```sql
+index=* source="access.log" useragent="sqlmap/1.9.3#stable (https://sqlmap.org)" status!=400 status!=404
+| eval decoded = urldecode(uri_query)
+| table  _time, status, decoded
+| sort  by _time asc
 ```
 
-#### Qx
-pytanie
+#### Q7
+After cracking the extracted hash, the attacker gained valid server credentials. Which user's password was compromised for initial authentication?
 <details>
   <summary>Answer: Click me</summary>
-  odpowiedz
+  mourinho.j
 </details>
 
 ```
-komentarz, wyjasnienie etc
+Tutaj przyda się magia Splunk. Analizując jak działa sqlmap i patrząc na zapytania możemy zauważyć coś so się nazywa "blind boolean SQL injection" . Chodzi o to że z serwera możemy wyciągnąć tylko informację binarnie (tak/nie) na podstawie kodu odpowiedzi html w informacji zwrotnej. Czyli w skórcie pytamy w tym przypadku o kolejne litery pierwszego usera w tabeli "user_login". Konsekwetnie pytajac możemy ustalić kolejne litery znajdujące się w nazwie usera. Potem możemy to wykonać dla kolejnych userów, potem możemy odpowiadajce im hashe hasełł wyciągnąć. Zapytania sqlmapa są dośc wyrafinowane, i wczesniej jest pytanie o ilosc znakow, potem wyciaganie w wartosci asci. Do analizy. Poniżej już dopracowane zapytanie SPL które wyciąga nazwę drugiego z kolei usera z logów pozostawionych przez sqlmap.
+```
+```sql
+index=* source="access.log" useragent="sqlmap/1.9.3#stable (https://sqlmap.org)" *user_login*
+| eval decoded = urldecode(uri_query)
+| rex field=decoded ".*CAST\(user_login.*LIMIT (?<user_idx>\d+),1\),(?<char_pos>\d+),1\)\)>(?<value>\d+)"
+| where user_idx=1 AND status=200
+| stats max(value) as final_value by char_pos
+| eval final_value = final_value+1
+| eval char = printf("%c", final_value)
+| table char_pos, final_value, char
+| sort by char_pos
 ```
 
-#### Qx
-pytanie
+#### Q8
+A Kerberoasting attack was conducted after compromising the first user. Which user was targeted by this attack?
 <details>
   <summary>Answer: Click me</summary>
-  odpowiedz
+  alonso.x
 </details>
 
 ```
@@ -160,14 +177,14 @@ komentarz, wyjasnienie etc
 
 ## tl;dr czyli Kill Chain
 1. Reconnaissance
-  - skonowanie Wordpressa za pomocą WPScan z adresu 47.128.63.0 [2025-09-18 02:15:00] ~ [2025-09-18 02:20:00]
+  - skanowanie Wordpressa za pomocą WPScan z adresu 47.128.63.0 [2025-09-18 02:15:00] ~ [2025-09-18 02:20:00]
 
 2. Initial Access
   - Wykrycie podatnego pluginu Perfect Survey [2025-09-18T02:20:16.000+00:00]
   - Exploitacja podatności narzędziem sqlmap od [2025-09-18T02:23:39.000+00:00]
 
-2. Execution
-  - asdf
+3. Execution
+  - wyciągnięcie użytkownika oraz hashu jego hasła [2025-09-18 02:23:39] ~ [2025-09-18 03:11:50]
 
 3. Discovery/Enumeration
   - asdf
@@ -192,3 +209,38 @@ komentarz, wyjasnienie etc
 
 10. Defense Evasion
   - asdf
+
+# Lessonss&Learned
+
+### Blind SQL Injection (Blind SQLi)
+ - to rodzaj ataku typu SQL Injection, w którym aplikacja jest podatna na wstrzyknięcie kodu, ale jej odpowiedzi nie zawierają bezpośrednich wyników zapytania ani komunikatów o błędach bazy danych. 
+
+W przeciwieństwie do klasycznego SQLi, gdzie dane (np. hasła) pojawiają się wprost na stronie, w wersji "ślepej" atakujący musi zadawać bazie danych pytania typu tak/nie i obserwować reakcję serwera. 
+
+Główne rodzaje Blind SQLi
+Boolean-based (oparty na logice): Atakujący wysyła zapytania sprawdzające prawdziwość warunku. Jeśli strona ładuje się normalnie, warunek jest prawdziwy; jeśli treść się zmienia lub znika – fałszywy.
+Time-based (oparty na czasie): Wykorzystuje funkcje wstrzymujące działanie bazy danych (np. SLEEP()). Jeśli serwer odpowiada z opóźnieniem, oznacza to, że wstrzyknięty warunek został spełniony. 
+
+### jak sqlmap pytał w tym labie
+MID(user_login, N, 1) — wycinanie znaku na pozycji N
+ORD(...) — zamiana na kod ASCII
+binary search przez porównania > X
+200 = TAK, 404 = NIE — jedyna informacja jaką daje serwer
+
+### Kerberoasting
+ - atak polegający na wyłudzeniu biletów TGS dla kont z ustawionym SPN, a następnie złamaniu ich offline.
+
+#### Jak działa?
+Atakujący (zwykły użytkownik domenowy) pyta DC o bilet TGS dla konta usługowego
+DC wydaje bilet zaszyfrowany hashem konta usługowego
+Atakujący zabiera bilet i łamie go offline (Hashcat, John)
+Rezultat: hasło konta usługowego
+
+#### Kluczowe szczegóły
+Nie potrzeba uprawnień admina — wystarczy dowolne konto domenowe
+Celowo żąda się szyfrowania RC4 (0x17) zamiast AES — łatwiejsze do złamania
+Atakowane konta muszą mieć ustawiony SPN
+
+#### Detekcja (Event ID)
+EventCo rejestruje4769Żądanie TGS — główny wskaźnik
+Podejrzane sygnały: dużo żądań 4769 z jednego IP + Ticket_Encryption_Type=0x17
