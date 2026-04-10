@@ -222,10 +222,12 @@ Boolean-based (oparty na logice): Atakujący wysyła zapytania sprawdzające pra
 Time-based (oparty na czasie): Wykorzystuje funkcje wstrzymujące działanie bazy danych (np. SLEEP()). Jeśli serwer odpowiada z opóźnieniem, oznacza to, że wstrzyknięty warunek został spełniony. 
 
 ### jak sqlmap pytał w tym labie
+```sql
 MID(user_login, N, 1) — wycinanie znaku na pozycji N
 ORD(...) — zamiana na kod ASCII
 binary search przez porównania > X
 200 = TAK, 404 = NIE — jedyna informacja jaką daje serwer
+```
 
 ### Kerberoasting
  - atak polegający na wyłudzeniu biletów TGS dla kont z ustawionym SPN, a następnie złamaniu ich offline.
