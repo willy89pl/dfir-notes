@@ -60,10 +60,11 @@ komentarz / query
 
 ## Timeline
 
-### 1. Reconnaissance
-| Czas (UTC) | Zdarzenie |
-|------------|-----------|
-| | |
+### 1. Initial Access
+
+| Czas (UTC)          | Zdarzenie                                   |
+| ------------------- | ------------------------------------------- |
+| 2025-10-18 09:05:19 | Wyskozenie z tryby kiosku przyciskiem help. |
 
 ### 2. Initial Access
 | Czas (UTC) | Zdarzenie |
