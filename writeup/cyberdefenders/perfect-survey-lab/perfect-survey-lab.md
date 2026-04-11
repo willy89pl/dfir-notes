@@ -149,7 +149,7 @@ The attacker requested a service ticket through the configured Resource-Based Co
 </details>
 
 ```
-komentarz, wyjasnienie etc
+Śladem takie operacji bedzie event 4742(A computer account was changed), gdzie przejety alonso.x modyfikuje atrybut z Q10 dla konta które jest nasza odpowiedzią.
 ```
 
 #### Q12
