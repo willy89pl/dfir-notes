@@ -34,11 +34,12 @@ One of the most well-known kiosk breakout techniques involves abusing browser sh
 
 <details>
   <summary>Answer: Click me</summary>
-  odpowiedź
+  https://go.microsoft.com/fwlink/?LinkID=2004230
 </details>
 
 ```
-komentarz / query
+Odpowiedzi będziemy szukać zatem w historii przeglądarki. Co ważne istotne jest aby szukać we właściwym userze. Plik histori dla Edge leży w : C:\Users\<user>\AppData\Local\Microsoft\Edge\User Data\Default\History
+Przegląać to możemy np. DB browesr for SQLLite
 ```
 
 ---
