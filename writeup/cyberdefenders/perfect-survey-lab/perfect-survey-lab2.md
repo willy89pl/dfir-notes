@@ -15,7 +15,7 @@ date: 2026-04-11
 
 # Perfect Survey Lab
 
-> Analiza ataku na serwer webowy z WordPressem, który pełnił jednocześnie rolę kontrolera domeny. Łańcuch ataku prowadzi od SQL Injection przez Kerberoasting i RBCD do eskalacji przez AD CS.
+> Analiza ataku na serwer webowy z WordPressem, który pełnił jednocześnie rolę kontrolera domeny. Łańcuch ataku prowadzi od SQL Injection przez Kerberoasting i [[rbcd]] do eskalacji przez AD CS([[adcs-esc1]]).
 
 ## Scenario
 The Wowza Sport website recently came under a suspected cyberattack. Internal stakeholders believe that a rival competitor may be behind the incident. On the day of the attack, monitoring systems detected a sudden and abnormal surge in incoming web requests, overwhelming the company's online services.
@@ -264,10 +264,10 @@ Analogicznie do Q12 — w tym samym żądaniu (EventID=4886) jest informacja o s
 | 2025-09-18T02:23:39.000+00:00 | Rozpoczęcie exploitacji pluginu przez sqlmap |
 
 ### 3. Credential Access
-| Czas (UTC)                     | Zdarzenie                                                                |
-| ------------------------------ | ------------------------------------------------------------------------ |
-| 2025-09-18 02:23:39 ~ 03:11:50 | Blind Boolean SQLi — wyciągnięcie użytkownika `mourinho.j` i hasha hasła |
-| 2025-09-18T02:40:44.913+00:00  | Kerberoasting — EventID=4769, ServiceName=alonso.x, EncType=0x17         |
+| Czas (UTC)                     | Zdarzenie                                                            |
+| ------------------------------ | -------------------------------------------------------------------- |
+| 2025-09-18 02:23:39 ~ 03:11:50 | [[blind-sqli]] — wyciągnięcie użytkownika `mourinho.j` i hasha hasła |
+| 2025-09-18T02:40:44.913+00:00  | [[kerberoasting]] — EventID=4769, ServiceName=alonso.x, EncType=0x17 |
 
 ### 4. Privilege Escalation
 | Czas (UTC) | Zdarzenie |

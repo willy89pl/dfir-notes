@@ -32,9 +32,8 @@ pytanie
   odpowiedź
 </details>
 
-```
-komentarz / query
-```
+>komentarz / query
+
 
 ---
 
@@ -46,9 +45,8 @@ pytanie
   odpowiedź
 </details>
 
-```
-komentarz / query
-```
+>komentarz / query
+
 
 ---
 
