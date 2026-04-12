@@ -97,21 +97,21 @@ With command-line access established, the threat actor's next objective was priv
 
 <details>
   <summary>Answer: Click me</summary>
-  odpowiedź
+  http://file.bsxwwdsdsa.dev/lightpeas.bat
 </details>
 
->komentarz / query
+>Atakujący miał dostep do cmd, czyli defacto mógł też powershell wywoływać. Przejrzałem dziennik ***Microsoft-Windows-PowerShell%4Operational.evtx*** ale znalazłem coś co przyda się później , nie zaś odpowiedź na pytanie. Jest jednak ciekawy artefakt wśród zabezpieczonych śladów - [[psreadline]] Zawartość mówi sama za siebie.
 
 ---
-### Qx
-pytanie
+### Q7
+After obtaining the local administrator credentials, the threat actor needed to spawn a new process running under the KioskAdmin security context. Identifying the exact command used reveals how the threat actor transitioned from the low-privileged kiosk user to the administrative account. What is the full command executed by the threat actor to start a new process as the KioskAdmin user?
 
 <details>
   <summary>Answer: Click me</summary>
-  odpowiedź
+  runas /user:KioskAdmin powershell
 </details>
 
->komentarz / query
+>Tutaj również bazujemy jak w Q7 na pliku [[psreadline]]
 
 ---
 ### Qx

