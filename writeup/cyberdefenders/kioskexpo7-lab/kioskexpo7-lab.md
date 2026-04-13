@@ -18,18 +18,19 @@ After the event concluded, the security team detected suspicious outbound connec
 
 Welcome to the KioskExpo7 lab! Step into the role of a forensic investigator and dissect a physical access attack that escalated from a kiosk breakout to full system compromise. The threat actor escaped browser restrictions, escalated privileges, established persistence, and potentially impacted conference attendees.
 
-You have been provided with a KAPE triage image from the compromised kiosk. Your mission is to reconstruct the complete attack timeline, identify the breakout and escalation techniques used, and determine the full scope of the compromise.
+You have been provided with a KAPE([[kape]]) triage image from the compromised kiosk. Your mission is to reconstruct the complete attack timeline, identify the breakout and escalation techniques used, and determine the full scope of the compromise.
 
 ---
 
 ## Tools
-| Narzędzie                 | Do czego użyte                                      |
-| ------------------------- | --------------------------------------------------- |
-| [[db-browser-for-sqlite]] | czytanie historii przeglądarki                      |
-| [[registry-explorer]]     | przeglądanie hive rejestrów                         |
-| [[timeline-explorer]]     | przeglądanie csv sprsowanych przez toole Zimmermana |
-| [[pecmd]]                 | parser plików prefetch                              |
-|                           |                                                     |
+| Narzędzie                 | Do czego użyte                                        |
+| ------------------------- | ----------------------------------------------------- |
+| [[db-browser-for-sqlite]] | czytanie historii przeglądarki                        |
+| [[registry-explorer]]     | przeglądanie hive rejestrów                           |
+| [[timeline-explorer]]     | przeglądanie csv sprsowanych przez toole Zimmermana   |
+| [[pecmd]]                 | parser plików prefetch                                |
+| [[ntfs-log-tracker]]      | pasrsowanie pllików [[mft]], [[logfile]], [[usnjrnl]] |
+| [[kape]]                  | kape przygotował dane wejściowe                       |
 
 ---
 
@@ -100,7 +101,7 @@ With command-line access established, the threat actor's next objective was priv
   http://file.bsxwwdsdsa.dev/lightpeas.bat
 </details>
 
->Atakujący miał dostep do cmd, czyli defacto mógł też powershell wywoływać. Przejrzałem dziennik ***Microsoft-Windows-PowerShell%4Operational.evtx*** ale znalazłem coś co przyda się później , nie zaś odpowiedź na pytanie. Jest jednak ciekawy artefakt wśród zabezpieczonych śladów - [[psreadline]] Zawartość mówi sama za siebie.
+>Atakujący miał dostep do cmd, czyli defacto mógł też powershell wywoływać. Przejrzałem dziennik ***Microsoft-Windows-PowerShell%4Operational.evtx*** ale znalazłem coś co przyda się później , nie zaś odpowiedź na pytanie. Jest jednak ciekawy artefakt wśród zabezpieczonych śladów - [[psreadline]] Zawartość mówi sama za siebie. Pobranie [[lightpeas]]...
 
 ---
 ### Q7
@@ -114,6 +115,108 @@ After obtaining the local administrator credentials, the threat actor needed to 
 >Tutaj również bazujemy jak w Q7 na pliku [[psreadline]]
 
 ---
+### Q8
+Running as KioskAdmin doesn't automatically grant elevated (high integrity) privileges due to User Account Control (UAC). The threat actor would need to explicitly launch an elevated process and approve the UAC prompt. Determining when this occurred establishes the exact moment full administrative control was achieved. When did the threat actor obtain full administrative privileges by launching an elevated PowerShell process? (Format: YYYY-MM-DD HH:MM:SS)
+
+<details>
+  <summary>Answer: Click me</summary>
+  2025-10-18 09:24:34
+</details>
+
+>Tutaj jest trochę trudno i jest pułapka. Musimy poszukać kilku śladów tej samej informacji i sprawdzić która jest bardziej odpowiednia. Mi pomogło prześledzenie sekwencji w dzienniku powershell-operational i obserwacje uruchomienia z prefetch. W tym drugim była prawidłowa odpowiedź.
+
+---
+### Q9
+What is the name of the registry value that was set to 0 to disable User Account Control?
+
+<details>
+  <summary>Answer: Click me</summary>
+  EnableLUA
+</details>
+
+>W hive ***SOFTWARE*** w ścieżce ***HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System*** znajdziemy rejestr istotny dla pytania.
+
+---
+### Q10
+Before concluding the attack, the threat actor attempted to cover their tracks by tampering with evidence of commands executed under the KioskAdmin account. Identifying when this anti-forensic activity occurred helps establish the end of the active intrusion phase. When did the threat actor overwrite the PowerShell command history file to remove evidence of suspicious commands from the KioskAdmin account? (Format: YYYY-MM-DD HH:MM:SS)
+
+<details>
+  <summary>Answer: Click me</summary>
+  2025-10-18 09:43:28
+</details>
+
+>Tutaj dość podchwytliwe pytanie, trzeba odnaleźć bardzo precyzyjny znacznik czasu. Próbowałem różnych ścieżek. Ostatecznie jedyna słuszna droga to przejrzeć dzienniki związane z NTFS , w ruch idzie [[ntfs-log-tracker]] i wertowanie plików [[mft]], [[logfile]], [[usnjrnl]] . Wiemy że szukamy pliku z historią komend PS, wiemy dla jakiego usera, mamy też zbudowany timeline. Wtedy jest easy.
+
+---
+### Q11
+Before changing back to the registration page in restricted browser opened by kiosk, the threat actor tried to clear off the track by deleting the downloaded file identified earlier. What is the name of this file in the recycle bin?
+
+<details>
+  <summary>Answer: Click me</summary>
+  $R0BD893.exe
+</details>
+
+>Wśród zabezpieczonych artefaktów przez [[kape]] jest też *kosz* ([[recycle-bin]]). Wykorzystując wiedzę o tym jak działa, o tym co znaleźliśmy w *koszu* oraz korelując to z wynikami z dzienników NTFS - odnajdziemy odpowiedź.
+
+---
+### Q12
+The privilege escalation script likely discovered credentials stored insecurely in the Windows registry. What is the password for the KioskAdmin account that the threat actor retrieved from the registry?
+
+<details>
+  <summary>Answer: Click me</summary>
+  KioskAdmin
+</details>
+
+>komentarz / query
+
+---
+### Q13
+One of the scheduled tasks functioned as a beacon, periodically sending system information including the public IP address and hostname to a C2 server. Identifying which public API the script used for IP discovery helps understand the beacon's reconnaissance capabilities. What is the full URL of the public API used by the beacon script to retrieve the system's public IP address?
+
+<details>
+  <summary>Answer: Click me</summary>
+  odpowiedź
+</details>
+
+>komentarz / query
+
+---
+### Q14
+To maintain persistent access to the compromised kiosk, the threat actor created PowerShell scripts that would be executed by scheduled tasks. Identifying where these scripts were stored helps locate the malicious payloads for further analysis. What is the full folder path where the threat actor created the PowerShell persistence scripts?
+
+<details>
+  <summary>Answer: Click me</summary>
+  C:\ProgramData\Maintenance
+</details>
+
+>Wśród zabezpieczonych śladów przez [[kape]] jest folder z ***Tasks***. Wśród nich mamy dwa nietypowe taski w których zawartości widzimy ścieżkę do skryptów PS.
+
+---
+
+### Q15
+The threat actor configured scheduled tasks to execute the persistence scripts, disguising them with legitimate-sounding names to avoid detection. Identifying these task names is essential for remediation and detecting similar compromises on other kiosk devices. What are the names of the two scheduled tasks created by the threat actor?
+
+<details>
+  <summary>Answer: Click me</summary>
+  KioskStatusCheck,KioskUpdate
+</details>
+
+>Tutaj analogicznie do Q14.
+
+---
+
+### Q16
+The second scheduled task implemented a polling mechanism to receive instructions from the C2 server. When the server responded with a specific trigger value, the script would download and execute additional payloads. What is the filename of the script that would be fetched and executed when the C2 server returned "1"?
+
+<details>
+  <summary>Answer: Click me</summary>
+  odpowiedź
+</details>
+
+>komentarz / query
+
+---
+
 ### Qx
 pytanie
 
@@ -125,6 +228,7 @@ pytanie
 >komentarz / query
 
 ---
+
 ### Qx
 pytanie
 
@@ -136,17 +240,8 @@ pytanie
 >komentarz / query
 
 ---
-### Qx
-pytanie
 
-<details>
-  <summary>Answer: Click me</summary>
-  odpowiedź
-</details>
 
->komentarz / query
-
----
 
 ## Timeline
 
@@ -165,14 +260,18 @@ pytanie
 
 ### 3. Privilege Escalation
 
-| Czas (UTC) | Zdarzenie |
-|------------|-----------|
-| | |
+| Czas (UTC)          | Zdarzenie                                                                              |
+| ------------------- | -------------------------------------------------------------------------------------- |
+| 2025-10-18 09:12:43 | Pobranie narzędzia [[lightpeas]] a w konsekwencji pozyskanie hasła do ***KioskAdmin*** |
+| 2025-10-18 09:24:03 | Uruchomienie powershell jako ***KioskAdmin*** (runas)                                  |
+| 2025-10-18 09:24:34 | Ponowne uruchomienie powershell już z potwierdzeniem UAC                               |
 
-### 4. Credential Access
-| Czas (UTC) | Zdarzenie |
-|------------|-----------|
-| | |
+### 4. Defense Evasion
+
+| Czas (UTC)          | Zdarzenie                                                                                                              |
+| ------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| 2025-10-18 09:43:28 | Zacieranie śladów. operacja ***Data_Overwritten*** na pliku ***ConsoleHost_history.txt*** użytkownika ***KioskAdmin*** |
+| 2025-10-18 09:43:46 | Usunięcie pliku ***$R0BD893.exe*** z kosza                                                                             |
 
 ### 5. Privilege Escalation
 | Czas (UTC) | Zdarzenie |
@@ -189,3 +288,6 @@ pytanie
 > ```
 > czyli FILETIME dzielimy przez milion i odejmujemy stałą wartość 11644473600 (róznica między FILETIME a UNIXTIME) i zamieniamy funkcją unixepoch
 > Logia jest ta sama i można implementować w innych programach i językach
+
+>W Q8 troche rozjazd bo:
+>Prefetch timestamp = moment uruchomienia procesu PowerShell 40961 = moment gdy konsola jest już gotowa Różnica ~1 sekunda = normalne , i tu mi nie wchodziła odpowiedź z powershell-operational
