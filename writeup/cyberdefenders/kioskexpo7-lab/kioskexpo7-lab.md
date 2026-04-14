@@ -167,7 +167,7 @@ The privilege escalation script likely discovered credentials stored insecurely 
   KioskAdmin
 </details>
 
->komentarz / query
+>W przypadku trybu kiosk często wykonuje się autologowanie usera , a jego kredki są zahardkodowane w odpowiednim atrybucie w rejestrze.
 
 ---
 ### Q13
@@ -175,10 +175,10 @@ One of the scheduled tasks functioned as a beacon, periodically sending system i
 
 <details>
   <summary>Answer: Click me</summary>
-  odpowiedź
+  https://ipinfo.io/json
 </details>
 
->komentarz / query
+>No tutaj nauczyłem się czegoś nowego... wiemy że są skrypty .ps ,ale nie mamy ich zawartości.... Jednak wiedza o [[mft]] a przede wszystkim o plikach rezydulanych (_resident_) wszystko załatwi. Dzięki temu odzyskamy zawartość skryptów.
 
 ---
 ### Q14
@@ -210,34 +210,35 @@ The second scheduled task implemented a polling mechanism to receive instruction
 
 <details>
   <summary>Answer: Click me</summary>
-  odpowiedź
+  quickupdate.txt
 </details>
 
->komentarz / query
+>Analogicznie do Q16. Mając zawartość skryptów możemy wyczytać zawartość do odpowiedzi.
 
 ---
 
-### Qx
-pytanie
+### Q17
+With administrative access secured, the threat actor's objective shifted to weaponizing the kiosk against conference attendees. The kiosk displayed a QR code for registration replacing it with a malicious version could redirect victims to a phishing site. Identifying the replacement file and when it was swapped is crucial for determining the window of potential victim exposure. What is the filename of the replacement QR code image, and when was it placed on the desktop? (Format: filename,YYYY-MM-DD HH:MM:SS)
 
 <details>
   <summary>Answer: Click me</summary>
-  odpowiedź
+  qr.png,2025-10-18 09:30:14
 </details>
 
->komentarz / query
+>Pytanie samo sugeruje nam gdzie powinniśmy szukać. Skoro było *replacement* to i pewnie był jakiś *renaming* a więc kierujemy się do operacji wykonywanych na plikach w ***NTFS***
 
 ---
 
-### Qx
-pytanie
+### Q18
+The new QR code redirects conference participants to a phishing site instead of the legitimate registration page. What is the URL of the phishing page that is now displayed?
 
 <details>
   <summary>Answer: Click me</summary>
-  odpowiedź
+  https://registerr.wowzaconf.dev/register.php
 </details>
 
->komentarz / query
+>Jednym z zabezpieczonych artefaktów przez [[kape]] jest obrazek png qr codem. znajduje się w: ***C:\Users\Administrator\Desktop\Start Here\Artifacts\KioskExpo7_Evidence\C\Users\kiosk\Desktop*** 
+>Jest to podmieniony obrazek prowadzący do strony phishing,
 
 ---
 

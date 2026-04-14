@@ -203,10 +203,12 @@
   },
   "active": "c26d7b59a4ef098a",
   "lastOpenFiles": [
-    "knowledge/tools/ZimmermanTools/evtxecmd.md",
+    "knowledge/windows/NTFS/mft.md",
     "writeup/cyberdefenders/kioskexpo7-lab/kioskexpo7-lab.md",
-    "knowledge/tools/ZimmermanTools/kape.md",
+    "knowledge/tools/r-studio.md",
     "knowledge/tools/ntfs-log-tracker.md",
+    "knowledge/tools/ZimmermanTools/evtxecmd.md",
+    "knowledge/tools/ZimmermanTools/kape.md",
     "knowledge/windows/recycle-bin.md",
     "knowledge/windows/psreadline.md",
     "knowledge/windows/Recycle Bin Forensics ($Recycle.Bin).md",
@@ -218,7 +220,6 @@
     "knowledge/tools/ZimmermanTools/pecmd.md",
     "knowledge/tools/ZimmermanTools/mftecmd.md",
     "knowledge/windows/NTFS/usnjrnl.md",
-    "knowledge/windows/NTFS/mft.md",
     "knowledge/windows/NTFS/logfile.md",
     "$MFT.md",
     "knowledge/windows/NTFS",
@@ -238,7 +239,6 @@
     "knowledge/tools/ZimmermanTools/timeline-explorer2.md",
     "knowledge/tools/ZimmermanTools/pecmd2.md",
     "knowledge/tools/ZimmermanTools/evtxecmd2.md",
-    "knowledge/web-attacks/blind-sqli.md",
     "Bez nazwy.canvas"
   ]
 }
