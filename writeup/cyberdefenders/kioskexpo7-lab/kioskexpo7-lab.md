@@ -261,23 +261,24 @@ The new QR code redirects conference participants to a phishing site instead of 
 
 ### 3. Privilege Escalation
 
-| Czas (UTC)          | Zdarzenie                                                                              |
-| ------------------- | -------------------------------------------------------------------------------------- |
-| 2025-10-18 09:12:43 | Pobranie narzędzia [[lightpeas]] a w konsekwencji pozyskanie hasła do ***KioskAdmin*** |
-| 2025-10-18 09:24:03 | Uruchomienie powershell jako ***KioskAdmin*** (runas)                                  |
-| 2025-10-18 09:24:34 | Ponowne uruchomienie powershell już z potwierdzeniem UAC                               |
+| Czas (UTC)          | Zdarzenie                                                                                                                                                      |
+| ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 2025-10-18 09:12:43 | Pobranie narzędzia [[lightpeas]] a w konsekwencji pozyskanie hasła do ***KioskAdmin***                                                                         |
+| 2025-10-18 09:24:03 | Uruchomienie powershell jako ***KioskAdmin*** (runas)                                                                                                          |
+| 2025-10-18 09:24:34 | Ponowne uruchomienie powershell już z potwierdzeniem UAC. Po tym czasie ustanowienie persystencji oraz ustanowienie kanału C2 poprzez skrypty ps w schedulrze. |
+### 4. Impact
 
-### 4. Defense Evasion
+| Czas (UTC)          | Zdarzenie                                               |
+| ------------------- | ---------------------------------------------------- |
+| 2025-10-18 09:3 Podmiana qr-code , na qr zawierający złośliwy link.  .  .  a  |
 
-| Czas (UTC)          | Zdarzenie                                                                                                              |
-| ------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| 2025-10-18 09:43:28 | Zacieranie śladów. operacja ***Data_Overwritten*** na pliku ***ConsoleHost_history.txt*** użytkownika ***KioskAdmin*** |
-| 2025-10-18 09:43:46 | Usunięcie pliku ***$R0BD893.exe*** z kosza                                                                             |
+### 5. Defense Evasion
 
-### 5. Privilege Escalation
-| Czas (UTC) | Zdarzenie |
-|------------|-----------|
-| | |
+| Czas (UTC)          | Zdarzenie                                                                                                               |
+| ------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| 2025-10-18 09:43:28 | Zacieranie śladów - operacja ***Data_Overwritten*** na pliku ***ConsoleHost_history.txt*** użytkownika ***KioskAdmin*** |
+| 2025-10-18 09:43:46 | Usunięcie pliku ***$R0BD893.exe*** z kosza                                                                              |
+
 
 ---
 
@@ -292,3 +293,5 @@ The new QR code redirects conference participants to a phishing site instead of 
 
 >W Q8 troche rozjazd bo:
 >Prefetch timestamp = moment uruchomienia procesu PowerShell 40961 = moment gdy konsola jest już gotowa Różnica ~1 sekunda = normalne , i tu mi nie wchodziła odpowiedź z powershell-operational
+
+>Q13 - no to tutaj to zwrot akcji... Bez wiedzy o systemie plików NTFS tego nie dałoby się zrobić... Pliki "rezydualne" (resident). Trzeba zapamiętać i uwzględnić w przyszłych forensic dyków z Windows....
