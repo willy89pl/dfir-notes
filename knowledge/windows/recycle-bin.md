@@ -9,6 +9,7 @@ category: windows
 platform: windows
 ---
 
+
 # Recycle Bin Forensics ($Recycle.Bin)
 
 ## Lokalizacja

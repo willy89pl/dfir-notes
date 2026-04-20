@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "writeup/cyberdefenders/kioskexpo7-lab/kioskexpo7-lab.md",
+                "file": "other/toole forensic.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "kioskexpo7-lab"
+              "title": "toole forensic"
             }
           },
           {
@@ -31,7 +31,8 @@
               "title": "Graph view"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -201,24 +202,32 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "c26d7b59a4ef098a",
+  "active": "e317832257f99682",
   "lastOpenFiles": [
-    "knowledge/windows/NTFS/mft.md",
+    "other/toole forensic.md",
+    "writeup/cyberdefenders/maranhao-lab/maranhao-lab.md",
+    "knowledge/tools/ZimmermanTools/mftecmd.md",
+    "knowledge/windows/recycle-bin.md",
+    "knowledge/windows/psreadline.md",
+    "knowledge/windows/prefetch.md",
+    "knowledge/tools/db-browser-for-sqlite.md",
+    "other/_template2.md",
+    "other/template_writeup.md",
     "writeup/cyberdefenders/kioskexpo7-lab/kioskexpo7-lab.md",
+    "writeup/cyberdefenders/maranhao-lab/maranhao-lab1.md",
+    "writeup/cyberdefenders/perfect-survey-lab/perfect-survey-lab2.md",
+    "writeup/cyberdefenders/perfect-survey-lab/perfect-survey-lab.md",
+    "writeup/cyberdefenders/maranhao-lab",
+    "knowledge/windows/NTFS/mft.md",
     "knowledge/tools/r-studio.md",
     "knowledge/tools/ntfs-log-tracker.md",
     "knowledge/tools/ZimmermanTools/evtxecmd.md",
     "knowledge/tools/ZimmermanTools/kape.md",
-    "knowledge/windows/recycle-bin.md",
-    "knowledge/windows/psreadline.md",
     "knowledge/windows/Recycle Bin Forensics ($Recycle.Bin).md",
-    "knowledge/windows/prefetch.md",
     "knowledge/windows/powershell-operational.md",
-    "knowledge/tools/db-browser-for-sqlite.md",
     "knowledge/tools/ZimmermanTools/timeline-explorer.md",
     "knowledge/tools/ZimmermanTools/registry-explorer.md",
     "knowledge/tools/ZimmermanTools/pecmd.md",
-    "knowledge/tools/ZimmermanTools/mftecmd.md",
     "knowledge/windows/NTFS/usnjrnl.md",
     "knowledge/windows/NTFS/logfile.md",
     "$MFT.md",
@@ -231,14 +240,6 @@
     "knowledge/Niepotwierdzony 444859.crdownload",
     "knowledge/Niepotwierdzony 304482.crdownload",
     "knowledge/windows/Niepotwierdzony 717033.crdownload",
-    "knowledge/tools/attack",
-    "writeup/cyberdefenders/redishell-kinsing/redishell-kinsing.md",
-    "knowledge/tools/attack/lightpeas.md",
-    "writeup/cyberdefenders/mbuchus-lab/mbuchu-lab.md",
-    "knowledge/tools/ZimmermanTools/registry-explorer2.md",
-    "knowledge/tools/ZimmermanTools/timeline-explorer2.md",
-    "knowledge/tools/ZimmermanTools/pecmd2.md",
-    "knowledge/tools/ZimmermanTools/evtxecmd2.md",
     "Bez nazwy.canvas"
   ]
 }
