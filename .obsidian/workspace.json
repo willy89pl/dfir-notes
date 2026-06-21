@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "knowledge/tools/attack/lightpeas.md",
+                "file": "courses/SC-200/kick off.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "lightpeas"
+              "title": "kick off"
             }
           }
         ]
@@ -191,8 +191,10 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "e4a54415b192203f",
+  "active": "c26d7b59a4ef098a",
   "lastOpenFiles": [
+    "knowledge/tools/attack/lightpeas.md",
+    "courses/SC-200/kick off.md",
     "courses/SC-200",
     "courses",
     "knowledge/active-directory/adcs-esc1.md",
@@ -220,7 +222,6 @@
     "knowledge/tools/ntfs-log-tracker.md",
     "knowledge/tools/ZimmermanTools/evtxecmd.md",
     "knowledge/tools/ZimmermanTools/kape.md",
-    "knowledge/windows/Recycle Bin Forensics ($Recycle.Bin).md",
     "knowledge/windows/NTFS",
     "knowledge/Niepotwierdzony 41183.crdownload",
     "knowledge/Niepotwierdzony 746300.crdownload",
@@ -228,7 +229,6 @@
     "knowledge/Niepotwierdzony 138954.crdownload",
     "knowledge/Niepotwierdzony 261214.crdownload",
     "knowledge/Niepotwierdzony 444859.crdownload",
-    "knowledge/Niepotwierdzony 304482.crdownload",
     "Bez nazwy.canvas"
   ]
 }
