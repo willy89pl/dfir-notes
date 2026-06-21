@@ -25,10 +25,14 @@
             "id": "e317832257f99682",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "Graph view"
+              "type": "split-diff-view",
+              "state": {
+                "aFile": "writeup/cyberdefenders/ContainerBreak - Rootkit Trail Lab/ContainerBreak - Rootkit Trail Lab.md",
+                "bFile": "writeup/cyberdefenders/ContainerBreak - Rootkit Trail Lab/ContainerBreak - Rootkit Trail Lab.md",
+                "aRef": ""
+              },
+              "icon": "diff",
+              "title": "Diff: ContainerBreak - Rootkit Trail Lab  (Working Tree)"
             }
           }
         ],
@@ -55,7 +59,7 @@
                 "autoReveal": false
               },
               "icon": "lucide-folder-closed",
-              "title": "Files"
+              "title": "Przeglądarka plików"
             }
           },
           {
@@ -188,24 +192,31 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 529.5
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:Open quick switcher": false,
-      "graph:Open graph view": false,
-      "canvas:Create new canvas": false,
-      "daily-notes:Open today's daily note": false,
-      "templates:Insert template": false,
-      "command-palette:Open command palette": false,
-      "bases:Create new base": false,
+      "switcher:Otwórz okno szybkiego wyboru": false,
+      "graph:Otwórz podgląd grafu": false,
+      "canvas:Stwórz nową tablicę": false,
+      "daily-notes:Otwórz dzisiejszy dziennik": false,
+      "templates:Wstaw szablon": false,
+      "command-palette:Otwórz listę poleceń": false,
+      "bases:Stwórz nową bazę danych": false,
       "obsidian-git:Open Git source control": false
     }
   },
   "active": "e317832257f99682",
   "lastOpenFiles": [
-    "other/toole forensic.md",
+    "writeup/cyberdefenders/kioskexpo7-lab/kioskexpo7-lab.md",
+    "writeup/cyberdefenders/ContainerBreak - Rootkit Trail Lab/ContainerBreak - Rootkit Trail Lab.md",
+    "writeup/cyberdefenders/xworm-lab/xworm-lab.md",
+    "writeup/cyberdefenders/rogue-azure-lab/rogue-azure-lab.md",
+    "writeup/cyberdefenders/redishell-kinsing/redishell-kinsing.md",
+    "writeup/cyberdefenders/perfect-survey-lab/perfect-survey-lab.md",
+    "writeup/cyberdefenders/mbuchus-lab/mbuchu-lab.md",
     "writeup/cyberdefenders/maranhao-lab/maranhao-lab.md",
+    "other/toole forensic.md",
     "knowledge/tools/ZimmermanTools/mftecmd.md",
     "knowledge/windows/recycle-bin.md",
     "knowledge/windows/psreadline.md",
@@ -213,10 +224,8 @@
     "knowledge/tools/db-browser-for-sqlite.md",
     "other/_template2.md",
     "other/template_writeup.md",
-    "writeup/cyberdefenders/kioskexpo7-lab/kioskexpo7-lab.md",
     "writeup/cyberdefenders/maranhao-lab/maranhao-lab1.md",
     "writeup/cyberdefenders/perfect-survey-lab/perfect-survey-lab2.md",
-    "writeup/cyberdefenders/perfect-survey-lab/perfect-survey-lab.md",
     "writeup/cyberdefenders/maranhao-lab",
     "knowledge/windows/NTFS/mft.md",
     "knowledge/tools/r-studio.md",
@@ -226,11 +235,6 @@
     "knowledge/windows/Recycle Bin Forensics ($Recycle.Bin).md",
     "knowledge/windows/powershell-operational.md",
     "knowledge/tools/ZimmermanTools/timeline-explorer.md",
-    "knowledge/tools/ZimmermanTools/registry-explorer.md",
-    "knowledge/tools/ZimmermanTools/pecmd.md",
-    "knowledge/windows/NTFS/usnjrnl.md",
-    "knowledge/windows/NTFS/logfile.md",
-    "$MFT.md",
     "knowledge/windows/NTFS",
     "knowledge/Niepotwierdzony 41183.crdownload",
     "knowledge/Niepotwierdzony 746300.crdownload",
