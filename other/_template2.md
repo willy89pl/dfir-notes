@@ -1,9 +1,10 @@
 ---
-tags: [cyberdefenders]
+tags:
+  - cyberdefenders
 platform: cyberdefenders
-category: 
-difficulty: 
-date: 
+category:
+difficulty:
+date:
 ---
 
 # Tytuł laba
