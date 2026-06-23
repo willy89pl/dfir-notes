@@ -13,14 +13,14 @@ category: sc-200
 
 
 
-### 🏢 Przykłady w Azure
+### Przykłady w Azure
 * **Azure Virtual Machines (VMs)** – wirtualne serwery Windows / Linux
 * **Azure Virtual Network (VNet)** – wirtualne sieci, podsieci
 * **Azure Disk Storage** – wirtualne dyski twarde podpinane do maszyn
 
 ---
 
-## 🛡️ Perspektywa SC-200 & Bezpieczeństwo
+## Perspektywa SC-200 & Bezpieczeństwo
 
 W modelu IaaS **odpowiedzialność klienta za bezpieczeństwo jest NAJWIĘKSZA** spośród wszystkich modeli chmurowych.
 
