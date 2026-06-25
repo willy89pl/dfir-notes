@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "courses/SC-200/02_Microsoft_365_Security (SaaS & XDR)/Microsoft Pureview (DLP ogólnie).md",
+                "file": "courses/SC-200/02_Microsoft_365_Security (SaaS & XDR)/Microsoft Defender/Microsoft Defender Vulnerability Management (MDVM) 1.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Microsoft Pureview (DLP ogólnie)"
+              "title": "Microsoft Defender Vulnerability Management (MDVM) 1"
             }
           }
         ]
@@ -194,25 +194,26 @@
   "active": "e317832257f99682",
   "lastOpenFiles": [
     "courses/SC-200/02_Microsoft_365_Security (SaaS & XDR)/Microsoft Defender XDR.md",
+    "courses/SC-200/02_Microsoft_365_Security (SaaS & XDR)/Microsoft Defender/Microsoft Defender Vulnerability Management (MDVM) 1.md",
+    "courses/SC-200/01_Identity_and_Access_Management (IAM)/Microsoft Intue (device & app mgmt).md",
+    "courses/SC-200/01_Identity_and_Access_Management (IAM)/Microsoft Entra Connect (Azure AD Connect dawniej).md",
+    "courses/SC-200/02_Microsoft_365_Security (SaaS & XDR)/Microsoft Defender/Microsoft Defender for Identity (MDI).md",
+    "courses/SC-200/02_Microsoft_365_Security (SaaS & XDR)/Microsoft Defender/Defender for Endpoint (MDE).md",
+    "courses/SC-200/02_Microsoft_365_Security (SaaS & XDR)/Microsoft Pureview (DLP ogólnie).md",
     "courses/SC-200/02_Microsoft_365_Security (SaaS & XDR)/Microsoft Defender/Microsoft Defender Vulnerability Management (MDVM).md",
     "courses/SC-200/02_Microsoft_365_Security (SaaS & XDR)/Microsoft Defender/Microsoft Defender for Cloud Apps (MDCA).md",
-    "courses/SC-200/02_Microsoft_365_Security (SaaS & XDR)/Microsoft Defender/Microsoft Defender for Identity (MDI).md",
     "courses/SC-200/02_Microsoft_365_Security (SaaS & XDR)/Microsoft Defender/Microsoft Defender for Office 365 (MDO).md",
-    "courses/SC-200/02_Microsoft_365_Security (SaaS & XDR)/Microsoft Defender/Defender for Endpoint (MDE).md",
     "Microsoft Defender XDR.md",
     "the-first-concept.png",
     "courses/SC-200/02_Microsoft_365_Security (SaaS & XDR)/Microsoft Defender",
-    "courses/SC-200/01_Identity_and_Access_Management (IAM)/Microsoft Entra Connect (Azure AD Connect dawniej).md",
     "courses/SC-200/01_Identity_and_Access_Management (IAM)/Microsoft Entra ID Protection (Azure AD Identity Protection dawniej).md",
     "courses/SC-200/01_Identity_and_Access_Management (IAM)/Microsoft Entra ID (Azure AD dawniej).md",
-    "courses/SC-200/01_Identity_and_Access_Management (IAM)/Microsoft Intue (device & app mgmt).md",
     "courses/SC-200/01_Identity_and_Access_Management (IAM)/IAM (Identity and Access Management).md",
     "courses/SC-200/Azure.md",
     "courses/SC-200/05_Microsoft_Sentinel (SIEM & SOAR)",
     "courses/SC-200/04_Azure_Security (Cloud Infrastructure)",
     "courses/SC-200/03_Data_Security_and_Compliance (Purview)",
     "courses/SC-200/_Notatki ogólne.md",
-    "courses/SC-200/02_Microsoft_365_Security (SaaS & XDR)/Microsoft Pureview (DLP ogólnie).md",
     "courses/SC-200/02_Microsoft_365_Security (SaaS & XDR)",
     "courses/SC-200/01_Identity_and_Access_Management (IAM)",
     "courses/SC-200/AD on-prem (and with cloud).md",
@@ -230,7 +231,6 @@
     "legacy-ad-on-prem.png",
     "knowledge/active-directory/Active Directory.md",
     "hybrid-ad.png",
-    "courses/SC-200/koncepcje/PaaS.md",
     "courses/SC-200",
     "courses",
     "Bez nazwy.canvas"
