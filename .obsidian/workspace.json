@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "courses/SC-200/02_Microsoft_365_Security (SaaS & XDR)/Microsoft Defender/Attack Surface Reduction (ASR).md",
+                "file": "courses/SC-200/koncepcje/Microsoft Defender for Cloud vs Defender for Cloud Apps.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Attack Surface Reduction (ASR)"
+              "title": "Microsoft Defender for Cloud vs Defender for Cloud Apps"
             }
           }
         ]
@@ -193,8 +193,14 @@
   },
   "active": "e317832257f99682",
   "lastOpenFiles": [
-    "courses/SC-200/02_Microsoft_365_Security (SaaS & XDR)/Microsoft Defender/Microsoft Defender for Endpoint — Remediation Levels.md",
+    "courses/SC-200/koncepcje/Device Groups — Defender vs Intune.md",
+    "courses/SC-200/koncepcje/Microsoft Defender for Cloud vs Defender for Cloud Apps.md",
+    "courses/SC-200/02_Microsoft_365_Security (SaaS & XDR)/Microsoft Defender/Microsoft Defender for Cloud Apps (MDCA).md",
+    "courses/SC-200/koncepcje/Resource Groups (Grupy zasobów).md",
+    "courses/SC-200/05_Microsoft_Sentinel (SIEM & SOAR)/Microsoft Sentinel — Data Connectors.md",
+    "courses/SC-200/05_Microsoft_Sentinel (SIEM & SOAR)/Microsoft Sentinel — Architektura i Wprowadzenie.md",
     "courses/SC-200/02_Microsoft_365_Security (SaaS & XDR)/Microsoft Defender/Attack Surface Reduction (ASR).md",
+    "courses/SC-200/02_Microsoft_365_Security (SaaS & XDR)/Microsoft Defender/Microsoft Defender for Endpoint — Remediation Levels.md",
     "courses/SC-200/02_Microsoft_365_Security (SaaS & XDR)/Microsoft Defender/Microsoft Defender Vulnerability Management (MDVM).md",
     "courses/SC-200/02_Microsoft_365_Security (SaaS & XDR)/Microsoft Defender XDR.md",
     "courses/SC-200/01_Identity_and_Access_Management (IAM)/Microsoft Intue (device & app mgmt).md",
@@ -202,7 +208,6 @@
     "courses/SC-200/02_Microsoft_365_Security (SaaS & XDR)/Microsoft Defender/Microsoft Defender for Identity (MDI).md",
     "courses/SC-200/02_Microsoft_365_Security (SaaS & XDR)/Microsoft Defender/Defender for Endpoint (MDE).md",
     "courses/SC-200/02_Microsoft_365_Security (SaaS & XDR)/Microsoft Pureview (DLP ogólnie).md",
-    "courses/SC-200/02_Microsoft_365_Security (SaaS & XDR)/Microsoft Defender/Microsoft Defender for Cloud Apps (MDCA).md",
     "courses/SC-200/02_Microsoft_365_Security (SaaS & XDR)/Microsoft Defender/Microsoft Defender for Office 365 (MDO).md",
     "Microsoft Defender XDR.md",
     "the-first-concept.png",
@@ -223,12 +228,7 @@
     "courses/SC-200/koncepcje/IaaS.md",
     "courses/SC-200/01_Identity_and_Access_Management (IAM)/RBAC (Role-Based Access Control).md",
     "courses/SC-200/Microsoft 365.md",
-    "courses/SC-200/koncepcje/CASB (Cloud Access Security Broker).md",
-    "CASB.md",
-    "2026-06-22.md",
-    "other/toole forensic.md",
     "Untitled.canvas",
-    "courses/SC-200/koncepcje/SaaS.md",
     "legacy-ad-on-prem.png",
     "hybrid-ad.png",
     "courses/SC-200",
