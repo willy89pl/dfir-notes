@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "courses/SC-200/05_Microsoft_Sentinel (SIEM & SOAR)/Microsoft Sentinel — Advanced Security Information Model (ASIM).md",
+                "file": "courses/SC-200/02_Microsoft_365_Security (SaaS & XDR)/Microsoft Pureview (DLP ogólnie).md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Microsoft Sentinel — Advanced Security Information Model (ASIM)"
+              "title": "Microsoft Pureview (DLP ogólnie)"
             }
           }
         ]
@@ -193,15 +193,17 @@
   },
   "active": "e317832257f99682",
   "lastOpenFiles": [
-    "courses/SC-200/05_Microsoft_Sentinel (SIEM & SOAR)/Microsoft Sentinel — Workbooks.md",
+    "courses/SC-200/02_Microsoft_365_Security (SaaS & XDR)/Microsoft Defender/Microsoft Defender for Office 365 (MDO).md",
+    "courses/SC-200/Azure Monitor Agent (AMA) Connector.md",
+    "courses/SC-200/koncepcje/ASIM ; Query-time Parsers vs Ingest-time.md",
+    "courses/SC-200/koncepcje/Microsoft Defender for Cloud vs Defender for Cloud Apps.md",
     "courses/SC-200/05_Microsoft_Sentinel (SIEM & SOAR)/Microsoft Sentinel — Advanced Security Information Model (ASIM).md",
+    "courses/SC-200/05_Microsoft_Sentinel (SIEM & SOAR)/Microsoft Sentinel — Workbooks.md",
     "courses/SC-200/05_Microsoft_Sentinel (SIEM & SOAR)/Microsoft Sentinel — Entities.md",
     "courses/SC-200/05_Microsoft_Sentinel (SIEM & SOAR)/Microsoft Sentinel — Analytics Rules.md",
-    "courses/SC-200/Azure Monitor Agent (AMA) Connector.md",
     "courses/SC-200/Azure.md",
     "courses/SC-200/05_Microsoft_Sentinel (SIEM & SOAR)/Microsoft Sentinel — role użytkowników.md",
     "courses/SC-200/05_Microsoft_Sentinel (SIEM & SOAR)/Microsoft Sentinel — Data Connectors.md",
-    "courses/SC-200/koncepcje/Microsoft Defender for Cloud vs Defender for Cloud Apps.md",
     "courses/SC-200/koncepcje/Device Groups — Defender vs Intune.md",
     "courses/SC-200/02_Microsoft_365_Security (SaaS & XDR)/Microsoft Defender/Microsoft Defender for Cloud Apps (MDCA).md",
     "courses/SC-200/koncepcje/Resource Groups (Grupy zasobów).md",
@@ -215,12 +217,10 @@
     "courses/SC-200/02_Microsoft_365_Security (SaaS & XDR)/Microsoft Defender/Microsoft Defender for Identity (MDI).md",
     "courses/SC-200/02_Microsoft_365_Security (SaaS & XDR)/Microsoft Defender/Defender for Endpoint (MDE).md",
     "courses/SC-200/02_Microsoft_365_Security (SaaS & XDR)/Microsoft Pureview (DLP ogólnie).md",
-    "courses/SC-200/02_Microsoft_365_Security (SaaS & XDR)/Microsoft Defender/Microsoft Defender for Office 365 (MDO).md",
     "Microsoft Defender XDR.md",
     "the-first-concept.png",
     "courses/SC-200/02_Microsoft_365_Security (SaaS & XDR)/Microsoft Defender",
     "courses/SC-200/01_Identity_and_Access_Management (IAM)/Microsoft Entra ID Protection (Azure AD Identity Protection dawniej).md",
-    "courses/SC-200/01_Identity_and_Access_Management (IAM)/Microsoft Entra ID (Azure AD dawniej).md",
     "courses/SC-200/05_Microsoft_Sentinel (SIEM & SOAR)",
     "courses/SC-200/04_Azure_Security (Cloud Infrastructure)",
     "courses/SC-200/03_Data_Security_and_Compliance (Purview)",

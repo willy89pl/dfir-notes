@@ -30,6 +30,7 @@ Podczas analizy scenariuszy hybrydowych na egzaminie SC-200 pamiętaj o złotej 
 1. Serwer lokalny (np. w fizycznym centrum danych) musi zostać zarejestrowany w usłudze **Azure Arc**.
 2. Azure Arc mapuje ten serwer jako natywny zasób w Twojej grupie zasobów Azure (Resource Group).
 3. Na tak przygotowany zasób Arc wdraża się agenta **AMA** i przypisuje regułę **DCR**.
+4. AMA pobiera logi z każdej maszyny niezależnie od regionu. (Windows Security Events via the AMA data connector can ingest security events from any Windows Azure virtual machine, regardless of whether it runs Windows Server or Windows client and regardless of the region to which it is deployed.)
 
 > [!CAUTION] Pułapka SC-200 (Wycofanie MMA)
 > Starszy agent (Log Analytics Agent / MMA) został oficjalnie wycofany przez Microsoft. Wszelkie pytania projektowe i wdrożeniowe dotyczące zbierania logów z maszyn systemowych w nowoczesnym SOC muszą wskazywać na użycie **Azure Monitor Agent (AMA)** i reguł **DCR**.

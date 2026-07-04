@@ -15,6 +15,7 @@ category: sc-200
 
 W strategii **Zero Trust** Purview odpowiada za najważniejszy, wewnętrzny filar: **Dane**.
 
+Polityki w DLP (Purview) mają "priority" - im niższa liczba tym wyższy priorytet! Takie nieintuicyjne...
 
 
 ---

@@ -16,7 +16,7 @@ tags:
 ---
 # Microsoft Defender for Office 365 (MDO)
 
-Microsoft Defender for Office 365 (MDO) to system ochrony poczty elektronicznej oraz narzędzi do pracy wspólnej (SaaS). Zabezpiecza organizację przed zaawansowanymi atakami phishingowymi, złośliwymi linkami (URL), zainfekowanymi załącznikami oraz próbami podszywania się pod kadrę zarządzającą (Business Email Compromise - BEC).
+Microsoft Defender for Office 365 (**MDO**) to system ochrony poczty elektronicznej oraz narzędzi do pracy wspólnej (**Teams, Sharepoint, OneDrive**). Zabezpiecza organizację przed zaawansowanymi atakami phishingowymi, złośliwymi linkami (URL), zainfekowanymi załącznikami oraz próbami podszywania się pod kadrę zarządzającą (Business Email Compromise - BEC).
 
 ---
 
